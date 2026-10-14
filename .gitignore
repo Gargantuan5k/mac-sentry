@@ -1,3 +1,10 @@
 /build/
 __pycache__/
 *.pyc
+/docs/team_explainer.md
+/docs/work_split*
+/HANDOFF.md
+/results/fpga/
+/results/captures/
+/results/runs/
+/results/builds/
