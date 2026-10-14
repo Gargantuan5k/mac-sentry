@@ -63,3 +63,21 @@ formally complete merely because this initial implementation runs.
   are recorded in [the validation record](secded_model_validation.md).
 - T07 is still in progress: protected RTL, RTL fault injection, implementation
   evidence, and reviewer sign-off remain outstanding.
+
+## 2026-10-14 — T07 RTL implementation and simulation
+
+- Added separate parameterized SECDED encoder, decoder, and `mac_secded` core.
+  The MAC implements the Python contract and exposes a registered correction
+  pulse. Accumulator-only protection retains the two-edge transaction schedule.
+- The simulation harness mutates the actual stored codeword between edges and
+  checks the before/after XOR, raw storage, decoded readback, and protocol outputs.
+  Injection adds no production hardware ports or muxes.
+- Default 8/24 and reduced 4/8 RTL simulations matched Python, including baseline
+  vector replay, enumerated storage faults, and codec tests. Both widths passed
+  strict lint and Yosys synthesis with structural checks. All 29 Python tests pass.
+- Harness negative controls reject a wrong codec expectation, a missing injection,
+  and a truncated vector file. See [RTL validation](secded_rtl_validation.md) for
+  counts, reproduction commands, and scope limits.
+- `make all` now includes both variants; dedicated SECDED targets remain available.
+  T07 target implementation evidence and review are still outstanding. FPGA
+  wrapper/capture integration is next; no protected board result is claimed.

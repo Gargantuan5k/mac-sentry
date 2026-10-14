@@ -10,11 +10,12 @@ The authoritative project and execution plans are in
 This repository contains the portable code and verification/archive tools.
 
 The unprotected baseline has simulation coverage and a recorded ZedBoard MAC
-transaction. The Python SECDED codec and accumulator-only cycle model pass their
-initial tests; see the [model contract](spec/secded_accumulator.md) and
-[validation record](research/secded_model_validation.md).
-Protected RTL, arithmetic checking, retry, and protected commit logic are not
-implemented yet. Hardware functional results and timing closure are separate
+transaction. The SECDED codec and accumulator-only MAC are implemented in Python
+and RTL, with passing simulation, lint, and generic synthesis checks; see the
+[contract](spec/secded_accumulator.md) and [RTL validation](research/secded_rtl_validation.md).
+The protected core has not yet been implemented on the FPGA. Arithmetic checking,
+retry, and protected commit logic remain future work.
+Hardware functional results and timing closure are separate
 checks; inspect each run's evidence before making a claim.
 
 ## Dependencies
@@ -57,9 +58,13 @@ arguments accordingly. `file join` handles platform path separators and spaces.
 ## Local verification
 
 ```sh
-make all          # Python tests, two RTL configurations, lint, generic synthesis
+make all          # Python tests, both MAC variants at two widths, lint, generic synthesis
 make test         # Python tests and RTL regressions
 make test-secded  # Python SECDED codec and protected MAC model tests
+make test-secded-rtl    # Protected RTL: 8/24, codec checks and storage fault injection
+make test-secded-small  # Protected RTL: 4/8
+make lint-secded
+make synth-secded      # Generic synthesis of the protected core
 make lint
 make synth        # Technology-independent synthesis, not ASIC PPA or board timing
 make test-rtl SEED=42
@@ -67,6 +72,14 @@ make test-rtl OPERAND_WIDTH=4 ACC_WIDTH=8
 ```
 
 ## Vivado behavioral simulation
+
+The Vivado walkthrough below targets `mac_unprotected`. The protected simulation
+currently uses Verilator through `make test-secded-rtl`. Its vectors, reports,
+and provenance are stored under `build/secded_w8_a24/` and `build/secded_w4_a8/`.
+These build outputs are disposable and overwritten on reruns. The protected core
+adds `corrected`; its HDL dependencies and include path are listed in the
+[SECDED contract](spec/secded_accumulator.md#rtl-integration). FPGA wrappers and
+the current ILA archive checker still target the unprotected baseline.
 
 [`tests/mac_tb.sv`](tests/mac_tb.sv) replays the Python vectors and checks arithmetic
 and protocol signals each cycle. A mismatch stops simulation with diagnostics.
@@ -364,7 +377,8 @@ are ignored; synchronous reset aborts. See the specification before integration.
 
 ## Next milestone
 
-Close the baseline's timing-evidence gaps, review the interface contract, then
-implement the shortened 30-bit SECDED codec and accumulator-only baseline.
+Review the SECDED RTL and fault-injection evidence, then integrate the protected
+core into the ZedBoard design. Extend the capture checker for its failure and
+correction semantics, and measure protected area and routed timing.
 The prior-art review and novelty gate remain open; consult the plans in
 `../sop_docs/` for subsequent comparisons and fault campaigns.

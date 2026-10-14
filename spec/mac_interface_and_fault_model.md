@@ -60,7 +60,9 @@ command in the portable core. Board wrappers will add host transfers separately.
 
 ## Reserved recovery behavior
 
-Protected variants are not implemented yet. Their target external contract is:
+The accumulator-only SECDED implementation is specified separately in
+[secded_accumulator.md](secded_accumulator.md). Its completion behavior follows
+this target external contract:
 `done=1, result_valid=1, error=0` on success; `done=1, result_valid=0` with a
 nonzero error on terminal failure; error zero outside the completion pulse.
 Reserve error 1 for detected uncorrectable state, 2 for retry exhaustion, and 3
@@ -69,7 +71,9 @@ retries beyond the initial attempt (three total attempts). A detected rejected
 candidate must never commit. Reset remains the only operation that may abort
 busy work. Retry timing, correction indicators, protected operands, idle
 scrubbing, and validation-state encoding require a later specification revision
-with the protected implementation. These reservations are not tested guarantees.
+with the relevant protected implementation. The SECDED contract now defines
+idle scrubbing and the correction indicator; retry and control protection remain
+future work. Reservations for those future mechanisms are not tested guarantees.
 
 ## Signed residue equation
 

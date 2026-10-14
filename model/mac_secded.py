@@ -1,4 +1,4 @@
-"""Proposed cycle model for accumulator-only SECDED; no protected RTL yet."""
+"""Cycle reference for the accumulator-only SECDED RTL implementation."""
 
 from dataclasses import dataclass, field
 

@@ -27,7 +27,8 @@ def main():
     for folder in ("rtl", "model", "tests", "scripts", "spec"):
         files.extend(p for p in (ROOT / folder).rglob("*") if p.is_file() and "__pycache__" not in p.parts)
     artifacts = [args.output.parent / name for name in
-                 ("vectors.txt", "vectors.json", "simulation.log", "stat.json", "netlist.v", "netlist.json", "synth.log")]
+                 ("vectors.txt", "vectors.json", "simulation.log", "harness_checks.log",
+                  "compile.log", "stat.json", "netlist.v", "netlist.json", "synth.log")]
     record = {"created_utc": datetime.now(timezone.utc).isoformat(),
               "git_revision": command("git", "rev-parse", "HEAD"),
               "git_status": command("git", "status", "--porcelain"),
