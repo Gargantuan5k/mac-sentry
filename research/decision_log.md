@@ -37,3 +37,29 @@ and `../../sop_docs/radiation_hardened_mac_project_plan.md` (17 Sep).
 
 Execution-plan tasks require evidence and reviewer sign-off; no task is marked
 formally complete merely because this initial implementation runs.
+
+## 2026-10-14 — T07 Python model kickoff
+
+- Added a parameterized shortened extended Hamming codec and a separate
+  accumulator-only SECDED cycle model. The default storage format is 30 bits
+  for 24 data bits. Existing baseline code is preserved.
+- Proposed idle correction writeback and decode-before-commit semantics, with
+  failed commits retaining the damaged codeword. No retry is included.
+- Added an explicit stored-codeword XOR injection hook with before/after
+  acknowledgement. This is not yet a calibrated fault campaign.
+- Details and limits: [SECDED model contract](../spec/secded_accumulator.md).
+- No tests added or run in this step. T07 verification, protected RTL, hardware
+  integration, and reviewer sign-off remain outstanding.
+
+## 2026-10-14 — T07 initial Python verification
+
+- Added 14 SECDED codec/model tests. `make test-model` passes all 29 Python
+  tests, including existing baseline and archive tooling checks.
+- The codec checks use hand-derived codewords and an exhaustive distance oracle
+  for small codes, in addition to default-width single/double fault enumeration.
+- Transaction checks cover correction writeback, failed commit preservation,
+  status pulses, reset/clear, and baseline equivalence. No model fixes were needed.
+- Reproduce the SECDED subset with `make test-secded`; counts and limitations
+  are recorded in [the validation record](secded_model_validation.md).
+- T07 is still in progress: protected RTL, RTL fault injection, implementation
+  evidence, and reviewer sign-off remain outstanding.

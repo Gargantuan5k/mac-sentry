@@ -7,13 +7,16 @@ ACC_WIDTH ?= 24
 SEED ?= 20260923
 BUILD := build/w$(OPERAND_WIDTH)_a$(ACC_WIDTH)
 
-.PHONY: all test test-model test-rtl test-small lint synth vectors provenance
+.PHONY: all test test-model test-secded test-rtl test-small lint synth vectors provenance
 all: test lint synth
 
 test: test-model test-rtl test-small
 
 test-model:
 	$(PYTHON) -m unittest discover -s tests -p 'test_*.py' -v
+
+test-secded:
+	$(PYTHON) -m unittest discover -s tests -p 'test_*secded.py' -v
 
 vectors:
 	$(PYTHON) scripts/generate_vectors.py --operand-width $(OPERAND_WIDTH) --acc-width $(ACC_WIDTH) --seed $(SEED) --output $(BUILD)/vectors.txt

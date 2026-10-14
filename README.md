@@ -10,8 +10,11 @@ The authoritative project and execution plans are in
 This repository contains the portable code and verification/archive tools.
 
 The unprotected baseline has simulation coverage and a recorded ZedBoard MAC
-transaction. SECDED, arithmetic checking, retry, and protected commit logic are
-not implemented yet. Hardware functional results and timing closure are separate
+transaction. The Python SECDED codec and accumulator-only cycle model pass their
+initial tests; see the [model contract](spec/secded_accumulator.md) and
+[validation record](research/secded_model_validation.md).
+Protected RTL, arithmetic checking, retry, and protected commit logic are not
+implemented yet. Hardware functional results and timing closure are separate
 checks; inspect each run's evidence before making a claim.
 
 ## Dependencies
@@ -56,6 +59,7 @@ arguments accordingly. `file join` handles platform path separators and spaces.
 ```sh
 make all          # Python tests, two RTL configurations, lint, generic synthesis
 make test         # Python tests and RTL regressions
+make test-secded  # Python SECDED codec and protected MAC model tests
 make lint
 make synth        # Technology-independent synthesis, not ASIC PPA or board timing
 make test-rtl SEED=42
