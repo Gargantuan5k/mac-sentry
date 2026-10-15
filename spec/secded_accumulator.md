@@ -72,6 +72,8 @@ still requires synchronous reset before use.
 `rtl/secded_encoder.sv` and `rtl/secded_decoder.sv` are combinational modules.
 `rtl/mac_secded.sv` instantiates them around the accumulator storage register.
 All three include `rtl/secded_functions.vh` to derive the number of check bits.
+The MAC also includes `rtl/mac_secded_datapath.vh`, shared with the instrumented
+variant; the production module ties injection controls to zero.
 Add these files to the design sources and make `rtl/` an include directory.
 The default parameters are OPERAND_WIDTH=8 and ACC_WIDTH=24; 4/8 is also tested.
 
@@ -83,8 +85,10 @@ simulation; whether it meets a target clock period requires implementation.
 
 `acc_codeword` is the actual storage register (30 bits by default). A simulator
 visibility comment lets the C++ harness XOR it between edges and inspect the
-result. There are no hardware injection ports in the production RTL. A board
-fault-injection facility requires a separate, explicitly evaluated test design.
+result. There are no hardware injection ports in the production module.
+`mac_secded_injectable` provides an idle-only synchronous storage XOR path for
+the [ZedBoard test design](secded_fpga_setup.md). This is separate from the
+between-edge simulation injection and adds hardware whose cost must be recorded.
 
 ## Injection boundary and remaining work
 

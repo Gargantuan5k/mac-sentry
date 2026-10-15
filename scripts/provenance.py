@@ -24,7 +24,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     files = [ROOT / "Makefile", ROOT / "README.md"]
-    for folder in ("rtl", "model", "tests", "scripts", "spec"):
+    for folder in ("rtl", "model", "tests", "scripts", "spec", "fpga"):
         files.extend(p for p in (ROOT / folder).rglob("*") if p.is_file() and "__pycache__" not in p.parts)
     artifacts = [args.output.parent / name for name in
                  ("vectors.txt", "vectors.json", "simulation.log", "harness_checks.log",

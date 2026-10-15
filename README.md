@@ -63,6 +63,7 @@ make test         # Python tests and RTL regressions
 make test-secded  # Python SECDED codec and protected MAC model tests
 make test-secded-rtl    # Protected RTL: 8/24, codec checks and storage fault injection
 make test-secded-small  # Protected RTL: 4/8
+make test-secded-board  # Board wrapper/injector simulation using VIO/ILA stand-ins
 make lint-secded
 make synth-secded      # Generic synthesis of the protected core
 make lint
@@ -76,10 +77,12 @@ make test-rtl OPERAND_WIDTH=4 ACC_WIDTH=8
 The Vivado walkthrough below targets `mac_unprotected`. The protected simulation
 currently uses Verilator through `make test-secded-rtl`. Its vectors, reports,
 and provenance are stored under `build/secded_w8_a24/` and `build/secded_w4_a8/`.
+For the separate protected project, follow [SECDED FPGA setup](spec/secded_fpga_setup.md).
 These build outputs are disposable and overwritten on reruns. The protected core
 adds `corrected`; its HDL dependencies and include path are listed in the
-[SECDED contract](spec/secded_accumulator.md#rtl-integration). FPGA wrappers and
-the current ILA archive checker still target the unprotected baseline.
+[SECDED contract](spec/secded_accumulator.md#rtl-integration). A protected board
+wrapper is available in `fpga/zedboard/`; the current ILA archive checker still
+targets the unprotected baseline.
 
 [`tests/mac_tb.sv`](tests/mac_tb.sv) replays the Python vectors and checks arithmetic
 and protocol signals each cycle. A mismatch stops simulation with diagnostics.

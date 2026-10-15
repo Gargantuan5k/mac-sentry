@@ -11,9 +11,10 @@ SECDED_RTL := rtl/secded_encoder.sv rtl/secded_decoder.sv rtl/mac_secded.sv
 
 .PHONY: all test test-model test-secded test-rtl test-small lint synth vectors provenance
 .PHONY: secded-vectors test-secded-rtl test-secded-small lint-secded synth-secded
+.PHONY: test-secded-board
 all: test lint lint-secded synth synth-secded
 
-test: test-model test-rtl test-small test-secded-rtl test-secded-small
+test: test-model test-rtl test-small test-secded-rtl test-secded-small test-secded-board
 
 test-model:
 	$(PYTHON) -m unittest discover -s tests -p 'test_*.py' -v
@@ -25,7 +26,7 @@ secded-vectors: vectors
 	mkdir -p $(SECDED_BUILD)
 	$(PYTHON) scripts/generate_secded_vectors.py --operand-width $(OPERAND_WIDTH) --acc-width $(ACC_WIDTH) --seed $(SEED) --baseline $(BUILD)/vectors.txt --output $(SECDED_BUILD)/vectors.txt > $(SECDED_BUILD)/vectors.stdout
 
-$(SECDED_BUILD)/obj/Vsecded_verify_top: $(SECDED_RTL) rtl/secded_functions.vh tests/secded_verify_top.sv tests/secded_tb.cpp
+$(SECDED_BUILD)/obj/Vsecded_verify_top: $(SECDED_RTL) rtl/secded_functions.vh rtl/mac_secded_datapath.vh tests/secded_verify_top.sv tests/secded_tb.cpp
 	mkdir -p $(SECDED_BUILD)
 	$(VERILATOR) --cc --exe --build -j $(JOBS) --Wall -Irtl --top-module secded_verify_top --Mdir $(SECDED_BUILD)/obj -GOPERAND_WIDTH=$(OPERAND_WIDTH) -GACC_WIDTH=$(ACC_WIDTH) -CFLAGS "-DACC_WIDTH=$(ACC_WIDTH)" $(SECDED_RTL) tests/secded_verify_top.sv $(CURDIR)/tests/secded_tb.cpp > $(SECDED_BUILD)/compile.log 2>&1 || { cat $(SECDED_BUILD)/compile.log; exit 1; }
 
@@ -41,6 +42,13 @@ test-secded-small:
 
 lint-secded:
 	$(VERILATOR) --lint-only --Wall -Irtl --top-module mac_secded -GOPERAND_WIDTH=$(OPERAND_WIDTH) -GACC_WIDTH=$(ACC_WIDTH) $(SECDED_RTL)
+
+test-secded-board:
+	mkdir -p build/secded_board
+	$(VERILATOR) --binary --timing -j $(JOBS) --Wall -Wno-DECLFILENAME -Wno-TIMESCALEMOD -Irtl --top-module zedboard_secded_tb --Mdir build/secded_board/obj $(SECDED_RTL) rtl/mac_secded_injectable.sv fpga/zedboard/zedboard_secded_top.sv tests/zedboard_debug_models.sv tests/zedboard_secded_tb.sv > build/secded_board/compile.log 2>&1 || { cat build/secded_board/compile.log; exit 1; }
+	build/secded_board/obj/Vzedboard_secded_tb > build/secded_board/simulation.log 2>&1 || { cat build/secded_board/simulation.log; exit 1; }
+	cat build/secded_board/simulation.log
+	$(PYTHON) scripts/provenance.py --output build/secded_board/provenance.json
 
 synth-secded:
 	mkdir -p $(SECDED_BUILD)

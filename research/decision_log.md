@@ -81,3 +81,18 @@ formally complete merely because this initial implementation runs.
 - `make all` now includes both variants; dedicated SECDED targets remain available.
   T07 target implementation evidence and review are still outstanding. FPGA
   wrapper/capture integration is next; no protected board result is claimed.
+
+## 2026-10-14 — SECDED board test integration
+
+- Added a separate synthesizable `mac_secded_injectable` module and ZedBoard
+  wrapper matching the user's 4-input/7-output VIO and 16-probe ILA configuration.
+- Shared the MAC update logic in `mac_secded_datapath.vh`; production ties the
+  injection controls to zero and retains its original ports and semantics.
+- Board injection is an idle-edge XOR of actual stored data/check bits. It
+  acknowledges accepted nonzero masks, postpones scrubbing until the next edge,
+  and discards requests while busy/reset/clear. It does not inject in-flight work.
+- Board-wrapper simulation passed 465 enumerated single/double masks plus
+  request and priority checks. Production regressions are rerun after sharing
+  the datapath. User performs the Vivado project setup and target implementation.
+- Setup and probe mapping: [SECDED FPGA setup](../spec/secded_fpga_setup.md).
+  The archive analyzer still needs protected semantics; no board result is claimed.
