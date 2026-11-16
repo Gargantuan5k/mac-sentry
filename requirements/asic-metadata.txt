@@ -1,0 +1,2 @@
+# ProjectInfo metadata validation only; full precheck dependencies live in its image.
+PyYAML==6.0.2

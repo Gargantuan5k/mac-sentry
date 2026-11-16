@@ -1,0 +1,12 @@
+capture,sample,action,initial_acc,a,b,expected_acc,observed_acc,status,notes,fault_mask,expected_codeword,observed_codeword
+001_A1_mac_34x55,512,mac,0,34,55,1870,1870,PASS,Initial stored word is observed; history and capture/build identity are not established.,0,536900723,536900723
+002_A2_mac_plus15x10,512,mac,1870,15,10,2020,2020,PASS,Initial stored word is observed; history and capture/build identity are not established.,0,32299,32299
+003_A3_mac_clr3x-4,0,clear,0,3,-4,0,0,PASS,Initial stored word is observed; history and capture/build identity are not established.,0,0,0
+003_A3_mac_clr3x-4,512,ignored_start,0,3,-4,,0,BLOCKED,"Initial stored word is observed; history and capture/build identity are not established. Request blocked by reset, clear, busy, or injection.",0,,0
+004_A4_mac_clr-128x-128,512,mac,0,-128,-128,16384,16384,PASS,Initial stored word is observed; history and capture/build identity are not established.,0,537427976,537427976
+005_B1_single_data_bit,512,inject_1_bits,1870,34,55,1870,1870,PASS,Initial stored word is observed; history and capture/build identity are not established. PASS requires raw XOR and inject_fired; subsequent repair is a separate event.,4,536900727,536900727
+005_B1_single_data_bit,513,idle_repair,1870,34,55,1870,1870,PASS,Initial stored word is observed; history and capture/build identity are not established.,4,536900723,536900723
+006_B2_single_hamming_bit,512,inject_1_bits,1870,34,55,1870,1870,PASS,Initial stored word is observed; history and capture/build identity are not established. PASS requires raw XOR and inject_fired; subsequent repair is a separate event.,1,536900722,536900722
+006_B2_single_hamming_bit,513,idle_repair,1870,34,55,1870,1870,PASS,Initial stored word is observed; history and capture/build identity are not established.,1,536900723,536900723
+007_B3_single_overall_parity,512,inject_1_bits,1870,34,55,1870,1870,PASS,Initial stored word is observed; history and capture/build identity are not established. PASS requires raw XOR and inject_fired; subsequent repair is a separate event.,536870912,29811,29811
+007_B3_single_overall_parity,513,idle_repair,1870,34,55,1870,1870,PASS,Initial stored word is observed; history and capture/build identity are not established.,536870912,536900723,536900723

@@ -1,0 +1,132 @@
+[
+  {
+    "expected": "infrastructure_failure",
+    "name": "missing_tool",
+    "observed": "infrastructure_failure"
+  },
+  {
+    "expected": "tool_or_flow_failure",
+    "name": "nonzero_exit",
+    "observed": "tool_or_flow_failure"
+  },
+  {
+    "expected": "infrastructure_timeout",
+    "name": "child_timeout",
+    "observed": "infrastructure_timeout"
+  },
+  {
+    "child_pid": 657518,
+    "expected": "completed",
+    "name": "no_descendant_overlap",
+    "observed": "completed"
+  },
+  {
+    "expected": "clean",
+    "name": "clean_netlist",
+    "observed": "clean"
+  },
+  {
+    "expected": "PRODUCTION_INJECTION_LOGIC",
+    "name": "fault_port",
+    "observed": "PRODUCTION_INJECTION_LOGIC"
+  },
+  {
+    "expected": "PRODUCTION_INJECTION_LOGIC",
+    "name": "fault_net",
+    "observed": "PRODUCTION_INJECTION_LOGIC"
+  },
+  {
+    "expected": "PRODUCTION_INJECTION_LOGIC",
+    "name": "tmr_parent_mask",
+    "observed": "PRODUCTION_INJECTION_LOGIC"
+  },
+  {
+    "expected": "TIMING_REPORT_MISMATCH",
+    "name": "fabricated_slack",
+    "observed": "TIMING_REPORT_MISMATCH"
+  },
+  {
+    "expected": "RESOURCE_REPORT_MISMATCH",
+    "name": "fabricated_ffs",
+    "observed": "RESOURCE_REPORT_MISMATCH"
+  },
+  {
+    "expected": "UNMATCHED_CONSTRAINTS",
+    "name": "dsp_policy",
+    "observed": "UNMATCHED_CONSTRAINTS"
+  },
+  {
+    "expected": "MISSING_METRIC_FIELDS",
+    "name": "missing_metric",
+    "observed": "MISSING_METRIC_FIELDS"
+  },
+  {
+    "expected": "INCOMPLETE_REPORTS",
+    "name": "incomplete",
+    "observed": "INCOMPLETE_REPORTS"
+  },
+  {
+    "expected": "PRODUCTION_INJECTION_LOGIC",
+    "name": "production_fault_net",
+    "observed": "PRODUCTION_INJECTION_LOGIC"
+  },
+  {
+    "expected": "ROUTE_INCOMPLETE",
+    "name": "route_incomplete",
+    "observed": "ROUTE_INCOMPLETE"
+  },
+  {
+    "expected": "failure_to_close",
+    "kind": "synthetic classification control, not PPA",
+    "name": "negative_setup",
+    "observed": "failure_to_close",
+    "slacks": [
+      -1,
+      1,
+      1
+    ]
+  },
+  {
+    "expected": "failure_to_close",
+    "kind": "synthetic classification control, not PPA",
+    "name": "negative_hold",
+    "observed": "failure_to_close",
+    "slacks": [
+      1,
+      -1,
+      1
+    ]
+  },
+  {
+    "expected": "failure_to_close",
+    "kind": "synthetic classification control, not PPA",
+    "name": "negative_pulse",
+    "observed": "failure_to_close",
+    "slacks": [
+      1,
+      1,
+      -1
+    ]
+  },
+  {
+    "expected": "closed",
+    "kind": "synthetic classification control, not PPA",
+    "name": "all_positive",
+    "observed": "closed",
+    "slacks": [
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "expected": "TMR_MERGED_REGISTERS",
+    "name": "missing_canonical_bit",
+    "observed": "TMR_MERGED_REGISTERS"
+  },
+  {
+    "expected": "TMR_LANE_ALIAS",
+    "name": "aliased_lane",
+    "observed": "TMR_LANE_ALIAS"
+  }
+]

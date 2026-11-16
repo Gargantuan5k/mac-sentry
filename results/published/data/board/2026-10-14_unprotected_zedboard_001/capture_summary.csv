@@ -1,0 +1,2 @@
+capture,samples,checked_transitions,observed_events,complete_mac_transactions,mismatches,initial_accumulator,final_accumulator,analysis_error
+001_hw_ila_data_1,1024,1023,0,0,0,40,40,

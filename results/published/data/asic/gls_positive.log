@@ -1,0 +1,3 @@
+VCD info: dumpfile /home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_/gls_positive.vcd opened for output.
+M2_GLS_PASS transactions=777 aborts=2 samples=15642
+/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_/sources/tests/asic_gl_tb.sv:130: $finish called at 781904000 (1ps)

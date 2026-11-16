@@ -1,0 +1,20 @@
++====================+===================+========================+
+| Launch Setup Clock | Launch Hold Clock | Pin                    |
++====================+===================+========================+
+| core_clk           | core_clk          | acc_codeword_reg[15]/D |
+| core_clk           | core_clk          | acc_codeword_reg[1]/D  |
+| core_clk           | core_clk          | acc_codeword_reg[0]/D  |
+| core_clk           | core_clk          | acc_codeword_reg[3]/D  |
+| core_clk           | core_clk          | acc_codeword_reg[29]/D |
+| core_clk           | core_clk          | acc_codeword_reg[7]/D  |
+| core_clk           | core_clk          | acc_codeword_reg[28]/D |
+| core_clk           | core_clk          | acc_codeword_reg[27]/D |
+| core_clk           | core_clk          | acc_codeword_reg[26]/D |
+| core_clk           | core_clk          | acc_codeword_reg[24]/D |
+| core_clk           | core_clk          | acc_codeword_reg[22]/D |
+| core_clk           | core_clk          | acc_codeword_reg[25]/D |
+| core_clk           | core_clk          | acc_codeword_reg[23]/D |
+| core_clk           | core_clk          | acc_codeword_reg[21]/D |
+| core_clk           | core_clk          | acc_codeword_reg[20]/D |
+| core_clk           | core_clk          | acc_codeword_reg[19]/D |
++--------------------+-------------------+------------------------+

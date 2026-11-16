@@ -1,0 +1,3 @@
+capture,sample,action,initial_acc,a,b,expected_acc,observed_acc,status,notes
+001_sequence_003_step1,512,mac,0,34,55,1870,1870,PASS,Checks captured samples only; prior accumulator history is not established.
+002_sequence_003_step2,512,mac,1870,15,16,2110,2110,PASS,Checks captured samples only; prior accumulator history is not established.

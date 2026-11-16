@@ -1,0 +1,14 @@
+[
+  "/home/sid/Development/hardware/mac_sentry/build/overnight/20261107_100934_2_astra/workspace/build/pilot/run_e46nd7_8/obj/Vpilot_tb",
+  "+variant=1",
+  "+site=5",
+  "+mask=8",
+  "+lane=0",
+  "+duration=1",
+  "+a0=-49",
+  "+b0=22",
+  "+a=40",
+  "+b=92",
+  "+trace=/home/sid/Development/hardware/mac_sentry/build/overnight/20261107_100934_2_astra/workspace/build/pilot/run_e46nd7_8/trial_0353/trace.csv",
+  "+ack=/home/sid/Development/hardware/mac_sentry/build/overnight/20261107_100934_2_astra/workspace/build/pilot/run_e46nd7_8/trial_0353/ack.csv"
+]

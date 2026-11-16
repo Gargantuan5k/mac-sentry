@@ -8,6 +8,10 @@
 #include <stdexcept>
 #include <string>
 
+#ifndef OPERAND_WIDTH
+#define OPERAND_WIDTH 8
+#endif
+
 #ifndef ACC_WIDTH
 #define ACC_WIDTH 24
 #endif
@@ -67,7 +71,8 @@ int main(int argc, char** argv) {
                           >> pre_ready >> busy >> done >> valid >> error >> acc >> ready
                           >> corrected >> after_word)) throw std::runtime_error("malformed MAC record");
                 dut.rst = rst; dut.clear = clear; dut.start = start;
-                dut.operand_a = a; dut.operand_b = b;
+                dut.operand_a = uint64_t(a) & ((uint64_t{1} << OPERAND_WIDTH) - 1);
+                dut.operand_b = uint64_t(b) & ((uint64_t{1} << OPERAND_WIDTH) - 1);
                 dut.eval();
                 if (mask) {
                     const uint64_t old_word = dut.stored_codeword;

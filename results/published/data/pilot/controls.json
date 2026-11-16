@@ -1,0 +1,587 @@
+[
+  {
+    "expected": {
+      "expected": "clean",
+      "id": 29,
+      "observed": "false_alarm"
+    },
+    "name": "clean_sample_gate_false_alarm",
+    "observed": {
+      "expected": "clean",
+      "id": 29,
+      "observed": "false_alarm"
+    }
+  },
+  {
+    "expected": {
+      "expected": "clean",
+      "id": 29,
+      "observed": "silent_escape"
+    },
+    "name": "clean_sample_gate_silent_escape",
+    "observed": {
+      "expected": "clean",
+      "id": 29,
+      "observed": "silent_escape"
+    }
+  },
+  {
+    "expected": {
+      "expected": "clean",
+      "id": 29,
+      "observed": "timeout"
+    },
+    "name": "clean_sample_gate_timeout",
+    "observed": {
+      "expected": "clean",
+      "id": 29,
+      "observed": "timeout"
+    }
+  },
+  {
+    "expected": {
+      "expected": "clean",
+      "id": 29,
+      "observed": "detected_failure"
+    },
+    "name": "clean_sample_gate_detected_failure",
+    "observed": {
+      "expected": "clean",
+      "id": 29,
+      "observed": "detected_failure"
+    }
+  },
+  {
+    "name": "unmatched_workload",
+    "rejected": "UNMATCHED_WORKLOAD"
+  },
+  {
+    "name": "unmatched_bit",
+    "rejected": "UNMATCHED_LOGICAL_BIT"
+  },
+  {
+    "name": "nonfired_1",
+    "result": {
+      "ack_events": 1,
+      "acknowledged": 0,
+      "alarm": false,
+      "classification": "unacknowledged",
+      "expected": 1,
+      "latency": 1,
+      "observed": 1,
+      "requested": 1,
+      "required_ack_events": 1,
+      "successor": [
+        {
+          "acc": -5,
+          "alarm": 0,
+          "arithmetic_ok": 1,
+          "busy": 0,
+          "clear": 0,
+          "cycle": 10,
+          "done": 1,
+          "edge": "post",
+          "error": 0,
+          "phase": 2,
+          "raw0": 16777211,
+          "raw1": 16777211,
+          "raw2": 16777211,
+          "ready": 1,
+          "retry": 0,
+          "rst": 0,
+          "start": 0,
+          "valid": 1
+        }
+      ],
+      "terminal": [
+        {
+          "acc": 1,
+          "alarm": 0,
+          "arithmetic_ok": 1,
+          "busy": 0,
+          "clear": 0,
+          "cycle": 6,
+          "done": 1,
+          "edge": "post",
+          "error": 0,
+          "phase": 1,
+          "raw0": 1,
+          "raw1": 1,
+          "raw2": 1,
+          "ready": 1,
+          "retry": 0,
+          "rst": 0,
+          "start": 0,
+          "valid": 1
+        }
+      ]
+    }
+  },
+  {
+    "name": "nonfired_3",
+    "result": {
+      "ack_events": 1,
+      "acknowledged": 0,
+      "alarm": false,
+      "classification": "unacknowledged",
+      "expected": 1,
+      "latency": 1,
+      "observed": 1,
+      "requested": 1,
+      "required_ack_events": 1,
+      "successor": [
+        {
+          "acc": -5,
+          "alarm": 0,
+          "arithmetic_ok": 1,
+          "busy": 0,
+          "clear": 0,
+          "cycle": 10,
+          "done": 1,
+          "edge": "post",
+          "error": 0,
+          "phase": 2,
+          "raw0": 16777211,
+          "raw1": 16777211,
+          "raw2": 16777211,
+          "ready": 1,
+          "retry": 0,
+          "rst": 0,
+          "start": 0,
+          "valid": 1
+        }
+      ],
+      "terminal": [
+        {
+          "acc": 1,
+          "alarm": 0,
+          "arithmetic_ok": 1,
+          "busy": 0,
+          "clear": 0,
+          "cycle": 6,
+          "done": 1,
+          "edge": "post",
+          "error": 0,
+          "phase": 1,
+          "raw0": 1,
+          "raw1": 1,
+          "raw2": 1,
+          "ready": 1,
+          "retry": 0,
+          "rst": 0,
+          "start": 0,
+          "valid": 1
+        }
+      ]
+    }
+  },
+  {
+    "name": "nonfired_6",
+    "result": {
+      "ack_events": 1,
+      "acknowledged": 0,
+      "alarm": false,
+      "classification": "unacknowledged",
+      "expected": 1,
+      "latency": 1,
+      "observed": 1,
+      "requested": 1,
+      "required_ack_events": 1,
+      "successor": [
+        {
+          "acc": -5,
+          "alarm": 0,
+          "arithmetic_ok": 1,
+          "busy": 0,
+          "clear": 0,
+          "cycle": 10,
+          "done": 1,
+          "edge": "post",
+          "error": 0,
+          "phase": 2,
+          "raw0": 1073741780,
+          "raw1": 16777211,
+          "raw2": 16777211,
+          "ready": 1,
+          "retry": 0,
+          "rst": 0,
+          "start": 0,
+          "valid": 1
+        }
+      ],
+      "terminal": [
+        {
+          "acc": 1,
+          "alarm": 0,
+          "arithmetic_ok": 1,
+          "busy": 0,
+          "clear": 0,
+          "cycle": 6,
+          "done": 1,
+          "edge": "post",
+          "error": 0,
+          "phase": 1,
+          "raw0": 536870919,
+          "raw1": 1,
+          "raw2": 1,
+          "ready": 1,
+          "retry": 0,
+          "rst": 0,
+          "start": 0,
+          "valid": 1
+        }
+      ]
+    }
+  },
+  {
+    "name": "nonfired_8",
+    "result": {
+      "ack_events": 1,
+      "acknowledged": 0,
+      "alarm": false,
+      "classification": "unacknowledged",
+      "expected": 1,
+      "latency": 1,
+      "observed": 1,
+      "requested": 1,
+      "required_ack_events": 1,
+      "successor": [
+        {
+          "acc": -5,
+          "alarm": 0,
+          "arithmetic_ok": 1,
+          "busy": 0,
+          "clear": 0,
+          "cycle": 10,
+          "done": 1,
+          "edge": "post",
+          "error": 0,
+          "phase": 2,
+          "raw0": 1073741780,
+          "raw1": 16777211,
+          "raw2": 16777211,
+          "ready": 1,
+          "retry": 0,
+          "rst": 0,
+          "start": 0,
+          "valid": 1
+        }
+      ],
+      "terminal": [
+        {
+          "acc": 1,
+          "alarm": 0,
+          "arithmetic_ok": 1,
+          "busy": 0,
+          "clear": 0,
+          "cycle": 6,
+          "done": 1,
+          "edge": "post",
+          "error": 0,
+          "phase": 1,
+          "raw0": 536870919,
+          "raw1": 1,
+          "raw2": 1,
+          "ready": 1,
+          "retry": 0,
+          "rst": 0,
+          "start": 0,
+          "valid": 1
+        }
+      ]
+    }
+  },
+  {
+    "name": "nonfired_11",
+    "result": {
+      "ack_events": 1,
+      "acknowledged": 0,
+      "alarm": false,
+      "classification": "unacknowledged",
+      "expected": 1,
+      "latency": 1,
+      "observed": 1,
+      "requested": 1,
+      "required_ack_events": 1,
+      "successor": [
+        {
+          "acc": -5,
+          "alarm": 0,
+          "arithmetic_ok": 1,
+          "busy": 0,
+          "clear": 0,
+          "cycle": 10,
+          "done": 1,
+          "edge": "post",
+          "error": 0,
+          "phase": 2,
+          "raw0": 1073741780,
+          "raw1": 16777211,
+          "raw2": 16777211,
+          "ready": 1,
+          "retry": 0,
+          "rst": 0,
+          "start": 0,
+          "valid": 1
+        }
+      ],
+      "terminal": [
+        {
+          "acc": 1,
+          "alarm": 0,
+          "arithmetic_ok": 1,
+          "busy": 0,
+          "clear": 0,
+          "cycle": 6,
+          "done": 1,
+          "edge": "post",
+          "error": 0,
+          "phase": 1,
+          "raw0": 536870919,
+          "raw1": 1,
+          "raw2": 1,
+          "ready": 1,
+          "retry": 0,
+          "rst": 0,
+          "start": 0,
+          "valid": 1
+        }
+      ]
+    }
+  },
+  {
+    "name": "nonfired_13",
+    "result": {
+      "ack_events": 1,
+      "acknowledged": 0,
+      "alarm": false,
+      "classification": "unacknowledged",
+      "expected": 1,
+      "latency": 1,
+      "observed": 1,
+      "requested": 1,
+      "required_ack_events": 1,
+      "successor": [
+        {
+          "acc": -5,
+          "alarm": 0,
+          "arithmetic_ok": 1,
+          "busy": 0,
+          "clear": 0,
+          "cycle": 10,
+          "done": 1,
+          "edge": "post",
+          "error": 0,
+          "phase": 2,
+          "raw0": 1073741780,
+          "raw1": 16777211,
+          "raw2": 16777211,
+          "ready": 1,
+          "retry": 0,
+          "rst": 0,
+          "start": 0,
+          "valid": 1
+        }
+      ],
+      "terminal": [
+        {
+          "acc": 1,
+          "alarm": 0,
+          "arithmetic_ok": 1,
+          "busy": 0,
+          "clear": 0,
+          "cycle": 6,
+          "done": 1,
+          "edge": "post",
+          "error": 0,
+          "phase": 1,
+          "raw0": 536870919,
+          "raw1": 1,
+          "raw2": 1,
+          "ready": 1,
+          "retry": 0,
+          "rst": 0,
+          "start": 0,
+          "valid": 1
+        }
+      ]
+    }
+  },
+  {
+    "name": "nonfired_16",
+    "result": {
+      "ack_events": 1,
+      "acknowledged": 0,
+      "alarm": false,
+      "classification": "unacknowledged",
+      "expected": 1,
+      "latency": 1,
+      "observed": 1,
+      "requested": 1,
+      "required_ack_events": 1,
+      "successor": [
+        {
+          "acc": -5,
+          "alarm": 0,
+          "arithmetic_ok": 1,
+          "busy": 0,
+          "clear": 0,
+          "cycle": 10,
+          "done": 1,
+          "edge": "post",
+          "error": 0,
+          "phase": 2,
+          "raw0": 16777211,
+          "raw1": 16777211,
+          "raw2": 16777211,
+          "ready": 1,
+          "retry": 0,
+          "rst": 0,
+          "start": 0,
+          "valid": 1
+        }
+      ],
+      "terminal": [
+        {
+          "acc": 1,
+          "alarm": 0,
+          "arithmetic_ok": 1,
+          "busy": 0,
+          "clear": 0,
+          "cycle": 6,
+          "done": 1,
+          "edge": "post",
+          "error": 0,
+          "phase": 1,
+          "raw0": 1,
+          "raw1": 1,
+          "raw2": 1,
+          "ready": 1,
+          "retry": 0,
+          "rst": 0,
+          "start": 0,
+          "valid": 1
+        }
+      ]
+    }
+  },
+  {
+    "name": "nonfired_18",
+    "result": {
+      "ack_events": 1,
+      "acknowledged": 0,
+      "alarm": false,
+      "classification": "unacknowledged",
+      "expected": 1,
+      "latency": 1,
+      "observed": 1,
+      "requested": 1,
+      "required_ack_events": 1,
+      "successor": [
+        {
+          "acc": -5,
+          "alarm": 0,
+          "arithmetic_ok": 1,
+          "busy": 0,
+          "clear": 0,
+          "cycle": 10,
+          "done": 1,
+          "edge": "post",
+          "error": 0,
+          "phase": 2,
+          "raw0": 16777211,
+          "raw1": 16777211,
+          "raw2": 16777211,
+          "ready": 1,
+          "retry": 0,
+          "rst": 0,
+          "start": 0,
+          "valid": 1
+        }
+      ],
+      "terminal": [
+        {
+          "acc": 1,
+          "alarm": 0,
+          "arithmetic_ok": 1,
+          "busy": 0,
+          "clear": 0,
+          "cycle": 6,
+          "done": 1,
+          "edge": "post",
+          "error": 0,
+          "phase": 1,
+          "raw0": 1,
+          "raw1": 1,
+          "raw2": 1,
+          "ready": 1,
+          "retry": 0,
+          "rst": 0,
+          "start": 0,
+          "valid": 1
+        }
+      ]
+    }
+  },
+  {
+    "expected": "silent_escape",
+    "name": "wrong_valid",
+    "observed": "silent_escape"
+  },
+  {
+    "expected": "false_alarm",
+    "name": "false_alarm",
+    "observed": "false_alarm"
+  },
+  {
+    "expected": "silent_escape",
+    "name": "latent_wrong_valid",
+    "observed": "silent_escape"
+  },
+  {
+    "expected": "silent_escape",
+    "name": "rejection_then_wrong_valid",
+    "observed": "silent_escape"
+  },
+  {
+    "name": "missing_tail",
+    "rejected": "CAPTURE_CUTOFF"
+  },
+  {
+    "name": "gap",
+    "rejected": "TRACE_CONTINUITY"
+  },
+  {
+    "name": "missing_ack",
+    "observed": "unacknowledged"
+  },
+  {
+    "name": "wrong_delta",
+    "observed": "unacknowledged"
+  },
+  {
+    "name": "wrong_mask",
+    "observed": "unacknowledged"
+  },
+  {
+    "name": "wrong_edge",
+    "observed": "unacknowledged"
+  },
+  {
+    "command": [
+      "/usr/bin/python3",
+      "/home/sid/Development/hardware/mac_sentry/build/overnight/20261107_100934_2_astra/workspace/scripts/pilot_campaign.py",
+      "--jobs",
+      "1",
+      "--per-site",
+      "1",
+      "--verilator",
+      "/home/sid/Development/hardware/mac_sentry/build/overnight/20261107_100934_2_astra/workspace/build/pilot/run_e46nd7_8/intentionally_absent_verilator"
+    ],
+    "evidence": "/home/sid/Development/hardware/mac_sentry/build/overnight/20261107_100934_2_astra/workspace/build/pilot/run_55dolebf",
+    "name": "missing_tool_denominator",
+    "planned": 54,
+    "retained": 54,
+    "returncode": 1
+  }
+]

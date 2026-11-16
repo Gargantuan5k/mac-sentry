@@ -1,3 +1,5 @@
+> Historical research record. Stage names and local `build/` paths below identify the original experiments; they are not clone prerequisites. Start with the [current project overview](../docs/project_overview.md) and [portable results](../docs/results.md).
+
 # Initial SECDED RTL validation — 2026-10-14
 
 Separate `secded_encoder`, `secded_decoder`, and `mac_secded` modules implement

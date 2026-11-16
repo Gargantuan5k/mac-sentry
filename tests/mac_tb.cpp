@@ -7,6 +7,10 @@
 #include <stdexcept>
 #include <string>
 
+#ifndef OPERAND_WIDTH
+#define OPERAND_WIDTH 8
+#endif
+
 #ifndef ACC_WIDTH
 #define ACC_WIDTH 24
 #endif
@@ -37,7 +41,8 @@ int main(int argc, char** argv) {
             };
             dut.clk = 0;
             dut.rst = rst; dut.clear = clear; dut.start = start;
-            dut.operand_a = a; dut.operand_b = b;
+            dut.operand_a = uint64_t(a) & ((uint64_t{1} << OPERAND_WIDTH) - 1);
+            dut.operand_b = uint64_t(b) & ((uint64_t{1} << OPERAND_WIDTH) - 1);
             dut.eval();
             check("ready before edge", dut.ready, pre_ready);
             dut.clk = 1;

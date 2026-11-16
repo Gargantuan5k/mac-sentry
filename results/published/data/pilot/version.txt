@@ -1,0 +1,1 @@
+Verilator 5.046 2026-02-28 rev fedora-5.046

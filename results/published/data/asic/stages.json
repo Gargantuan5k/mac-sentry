@@ -1,0 +1,26 @@
+{
+  "harden": {
+    "status": "PASS"
+  },
+  "physical": {
+    "status": "PASS"
+  },
+  "precheck": {
+    "status": "PASS"
+  },
+  "precheck_xml": {
+    "status": "PASS"
+  },
+  "gls_positive": {
+    "status": "PASS"
+  },
+  "gls_negative_observation": {
+    "status": "PASS"
+  },
+  "gls_negative_arithmetic": {
+    "status": "PASS"
+  },
+  "gls": {
+    "status": "PASS"
+  }
+}

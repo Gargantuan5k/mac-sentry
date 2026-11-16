@@ -1,0 +1,9 @@
+capture,sample,action,initial_acc,a,b,expected_acc,observed_acc,status,notes,fault_mask,expected_codeword,observed_codeword
+,,mac,0,3,-4,-12,,NOT_RECORDED,Reset before test,,,
+,,mac,-12,2,5,-2,,NOT_RECORDED,Continue without clear,,,
+,,clear,-2,,,0,,NOT_RECORDED,Clear while idle,,,
+,,inject_1_bits,1870,,,1870,,NOT_RECORDED,"Capture raw XOR, inject_fired, then idle repair/corrected; see spec/board_validation_backlog.md",4,,
+,,inject_1_bits,1870,,,1870,,NOT_RECORDED,"Capture raw XOR, inject_fired, then idle repair/corrected; see spec/board_validation_backlog.md",1,,
+,,inject_1_bits,1870,,,1870,,NOT_RECORDED,"Capture raw XOR, inject_fired, then idle repair/corrected; see spec/board_validation_backlog.md",536870912,,
+,,inject_2_bits,1870,,,,,NOT_RECORDED,Require persistent damaged storage; readback is diagnostic,20,,
+,,mac_rejected,,15,10,,,NOT_RECORDED,"After double injection: done=1, valid=0, error=1, damaged word retained",,,

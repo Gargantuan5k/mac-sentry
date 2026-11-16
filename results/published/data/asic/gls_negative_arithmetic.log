@@ -1,0 +1,2 @@
+FATAL: /home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_/sources/tests/asic_gl_tb.sv:41: M2_GLS_ORACLE command expected=f5 got=f4 sample=28
+       Time: 1400000  Scope: asic_gl_tb.expect_byte

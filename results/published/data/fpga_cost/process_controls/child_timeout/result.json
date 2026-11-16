@@ -1,0 +1,5 @@
+{
+  "reason": "2 second per-variant limit; logs retained",
+  "returncode": 0,
+  "status": "infrastructure_timeout"
+}

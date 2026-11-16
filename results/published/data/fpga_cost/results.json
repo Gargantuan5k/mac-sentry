@@ -1,0 +1,178 @@
+[
+  {
+    "complete": "1",
+    "drc_report": "drc.rpt (unmodified; OOC boundary, no bitstream sign-off)",
+    "drc_warnings": [
+      "ZPS7-1"
+    ],
+    "dsp": 0,
+    "dsp_policy": "max_dsp_0",
+    "ff": 43,
+    "hold_slack_ns": -1.167,
+    "lut": 87,
+    "lut_primitives": 115,
+    "part": "xc7z020clg484-1",
+    "period_ns": "10.000",
+    "pulse_width_slack_ns": 4.5,
+    "returncode": 0,
+    "route_counts": {
+      "fully routed nets": 133,
+      "nets with routing errors": 0,
+      "routable nets": 133
+    },
+    "scope": "production_core_only_OOC",
+    "setup_slack_ns": 2.131,
+    "status": "failure_to_close",
+    "timing_checks": {
+      "constant_clock": 0,
+      "generated_clocks": 0,
+      "latch_loops": 0,
+      "loops": 0,
+      "multiple_clock": 0,
+      "no_clock": 0,
+      "no_input_delay": 0,
+      "no_output_delay": 0,
+      "partial_input_delay": 0,
+      "partial_output_delay": 0,
+      "pulse_width_clock": 0,
+      "unconstrained_internal_endpoints": 0
+    },
+    "tool_version": "2025.2.1",
+    "variant": "unprotected"
+  },
+  {
+    "complete": "1",
+    "drc_report": "drc.rpt (unmodified; OOC boundary, no bitstream sign-off)",
+    "drc_warnings": [
+      "ZPS7-1"
+    ],
+    "dsp": 0,
+    "dsp_policy": "max_dsp_0",
+    "ff": 51,
+    "hold_slack_ns": -1.161,
+    "lut": 210,
+    "lut_primitives": 240,
+    "part": "xc7z020clg484-1",
+    "period_ns": "10.000",
+    "pulse_width_slack_ns": 4.5,
+    "returncode": 0,
+    "route_counts": {
+      "fully routed nets": 253,
+      "nets with routing errors": 0,
+      "routable nets": 253
+    },
+    "scope": "production_core_only_OOC",
+    "setup_slack_ns": 0.21,
+    "status": "failure_to_close",
+    "timing_checks": {
+      "constant_clock": 0,
+      "generated_clocks": 0,
+      "latch_loops": 0,
+      "loops": 0,
+      "multiple_clock": 0,
+      "no_clock": 0,
+      "no_input_delay": 0,
+      "no_output_delay": 0,
+      "partial_input_delay": 0,
+      "partial_output_delay": 0,
+      "pulse_width_clock": 0,
+      "unconstrained_internal_endpoints": 0
+    },
+    "tool_version": "2025.2.1",
+    "variant": "secded"
+  },
+  {
+    "complete": "1",
+    "drc_report": "drc.rpt (unmodified; OOC boundary, no bitstream sign-off)",
+    "drc_warnings": [
+      "ZPS7-1"
+    ],
+    "dsp": 0,
+    "dsp_policy": "max_dsp_0",
+    "ff": 75,
+    "hold_slack_ns": -1.114,
+    "lut": 355,
+    "lut_primitives": 381,
+    "part": "xc7z020clg484-1",
+    "period_ns": "10.000",
+    "pulse_width_slack_ns": 4.5,
+    "returncode": 0,
+    "route_counts": {
+      "fully routed nets": 412,
+      "nets with routing errors": 0,
+      "routable nets": 412
+    },
+    "scope": "production_core_only_OOC",
+    "setup_slack_ns": -4.875,
+    "status": "failure_to_close",
+    "timing_checks": {
+      "constant_clock": 0,
+      "generated_clocks": 0,
+      "latch_loops": 0,
+      "loops": 0,
+      "multiple_clock": 0,
+      "no_clock": 0,
+      "no_input_delay": 0,
+      "no_output_delay": 0,
+      "partial_input_delay": 0,
+      "partial_output_delay": 0,
+      "pulse_width_clock": 0,
+      "unconstrained_internal_endpoints": 0
+    },
+    "tool_version": "2025.2.1",
+    "variant": "hybrid"
+  },
+  {
+    "complete": "1",
+    "drc_report": "drc.rpt (unmodified; OOC boundary, no bitstream sign-off)",
+    "drc_warnings": [
+      "ZPS7-1"
+    ],
+    "dsp": 0,
+    "dsp_policy": "max_dsp_0",
+    "ff": 200,
+    "hold_slack_ns": -1.119,
+    "lut": 352,
+    "lut_primitives": 423,
+    "part": "xc7z020clg484-1",
+    "period_ns": "10.000",
+    "pulse_width_slack_ns": 4.5,
+    "redundancy": {
+      "routed": {
+        "distinct_cells": 536,
+        "logical_lane_register_bits": 120,
+        "physical_lane_flops": 197
+      },
+      "synth": {
+        "distinct_cells": 531,
+        "logical_lane_register_bits": 120,
+        "physical_lane_flops": 192
+      }
+    },
+    "returncode": 0,
+    "route_counts": {
+      "fully routed nets": 596,
+      "nets with routing errors": 0,
+      "routable nets": 596
+    },
+    "scope": "production_core_only_OOC",
+    "setup_slack_ns": -4.96,
+    "status": "failure_to_close",
+    "timing_checks": {
+      "constant_clock": 0,
+      "generated_clocks": 0,
+      "latch_loops": 0,
+      "loops": 0,
+      "multiple_clock": 0,
+      "no_clock": 0,
+      "no_input_delay": 0,
+      "no_output_delay": 0,
+      "partial_input_delay": 0,
+      "partial_output_delay": 0,
+      "pulse_width_clock": 0,
+      "unconstrained_internal_endpoints": 0
+    },
+    "tool_version": "2025.2.1",
+    "variant": "tmr"
+  }
+]

@@ -1,0 +1,8 @@
+capture,samples,checked_transitions,observed_events,complete_mac_transactions,mismatches,initial_accumulator,final_accumulator,unchecked_transitions,analysis_error
+001_A1_mac_34x55,1024,1023,1,1,0,0,1870,0,
+002_A2_mac_plus15x10,1024,1023,1,1,0,1870,2020,0,
+003_A3_mac_clr3x-4,1024,1023,2,0,0,0,0,0,
+004_A4_mac_clr-128x-128,1024,1023,1,1,0,0,16384,0,
+005_B1_single_data_bit,1024,1023,2,0,0,1870,1870,0,
+006_B2_single_hamming_bit,1024,1023,2,0,0,1870,1870,0,
+007_B3_single_overall_parity,1024,1023,2,0,0,1870,1870,0,

@@ -1,0 +1,4 @@
+cycle,attempt,busy,rst,before,after,mask
+6,0,1,0,1,3,2
+7,1,1,0,1,3,2
+8,2,1,0,1,3,2

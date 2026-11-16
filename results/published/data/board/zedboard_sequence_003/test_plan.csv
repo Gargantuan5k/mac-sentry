@@ -1,0 +1,4 @@
+capture,sample,action,initial_acc,a,b,expected_acc,observed_acc,status,notes
+,,mac,0,3,-4,-12,,NOT_RECORDED,Reset before test
+,,mac,-12,2,5,-2,,NOT_RECORDED,Continue without clear
+,,clear,-2,,,0,,NOT_RECORDED,Clear while idle

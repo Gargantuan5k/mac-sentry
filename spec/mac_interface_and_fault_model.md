@@ -92,11 +92,14 @@ a hardware modulus or deriving protected overflow information is deferred.
 
 ## Fault model and outcome taxonomy
 
-The current executable regression is fault-free. This unprotected design has no
+The original baseline arithmetic regression is fault-free. CR6 adds a bounded
+seeded RTL pilot with separate calibration and protection strata, documented in
+[the pilot record](../research/pilot_validation.md). This unprotected design has no
 guaranteed detection, correction, or recovery; `error=0` cannot certify a result
 under a fault. No injection coverage or radiation tolerance is claimed.
 
-The planned comparison will distinguish:
+The broader comparison taxonomy is below. The pilot record explicitly lists
+which sites are sampled; this table is not a claim of implemented whole-design coverage:
 
 | Fault class | Planned semantics |
 | --- | --- |

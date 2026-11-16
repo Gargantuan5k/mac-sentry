@@ -1,0 +1,52 @@
+name: gds
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  gds:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v6
+        with:
+          submodules: recursive
+
+      - name: Build GDS
+        uses: TinyTapeout/tt-gds-action@395eedb3eeec3c2f4961c3b04ff2cf87f5525636 # ttsky26d
+        with:
+          pdk: sky130A
+          tools-ref: 9d13ff3e3e6202090740110438c6a10c1d62ca0f
+          librelane-version: 3.0.14
+
+      - name: Check physical configuration identity
+        run: python3 scripts/check_package.py --ci-config
+
+  precheck:
+    needs: gds
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Run Tiny Tapeout Precheck
+        uses: TinyTapeout/tt-gds-action/precheck@395eedb3eeec3c2f4961c3b04ff2cf87f5525636 # ttsky26d
+
+  gl_test:
+    needs: gds
+    runs-on: ubuntu-24.04
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v6
+        with:
+          submodules: recursive
+
+      - name: GL test
+        uses: TinyTapeout/tt-gds-action/gl_test@395eedb3eeec3c2f4961c3b04ff2cf87f5525636 # ttsky26d
+
+  viewer:
+    needs: gds
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+    steps:
+      - uses: TinyTapeout/tt-gds-action/viewer@395eedb3eeec3c2f4961c3b04ff2cf87f5525636 # ttsky26d

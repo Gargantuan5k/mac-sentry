@@ -36,7 +36,8 @@ def pack_verified(archive, run, names):
     if not archive.exists():
         temporary = archive.with_suffix('.zip.tmp')
         with temporary.open('xb') as stream:
-            with ZipFile(stream, 'w', compression=ZIP_DEFLATED, compresslevel=9) as handle:
+            with ZipFile(stream, 'w', compression=ZIP_DEFLATED, compresslevel=9,
+                         strict_timestamps=False) as handle:
                 for name in names:
                     handle.write(run / name, name)
         with ZipFile(temporary) as handle:

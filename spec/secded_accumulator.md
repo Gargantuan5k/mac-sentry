@@ -2,7 +2,9 @@
 
 Status: Python and RTL implementations pass initial codec and transaction tests;
 see [Python evidence](../research/secded_model_validation.md) and
-[RTL evidence](../research/secded_rtl_validation.md). FPGA implementation is pending.
+[RTL evidence](../research/secded_rtl_validation.md). Historical FPGA implementation
+and selected arithmetic/single-bit captures exist; double-error/recovery board
+validation remains pending (see [board backlog](board_validation_backlog.md)).
 These semantics are the T07 implementation contract, pending team review.
 The unprotected core and its reference model remain the comparison baseline.
 
@@ -110,6 +112,8 @@ reset and clear priorities; and fault-free equivalence to `MacModel`.
 Reproduce Python checks with `make test-secded` and RTL checks with
 `make test-secded-rtl test-secded-small`. RTL checks inspect raw stored codewords
 as well as outputs, and acknowledge that every requested injection changed the
-intended bits. Next work is review and FPGA integration with measured area/timing
-and an adapted capture checker. These simulations do not establish physical
-fault coverage or timing closure.
+intended bits. Historical FPGA implementation and the SECDED capture checker now exist; see
+the [capture audit](../research/secded_capture_validation.md) and
+[board backlog](board_validation_backlog.md). A3/double-error/recovery board
+evidence and broader review gates remain pending. These simulations do not
+establish physical fault coverage or timing closure.

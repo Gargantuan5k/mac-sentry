@@ -1,0 +1,2 @@
+capture,samples,checked_transitions,observed_events,complete_mac_transactions,mismatches,initial_accumulator,final_accumulator,analysis_error
+001_signed_mac_001,1024,1023,1,1,0,0,-12,

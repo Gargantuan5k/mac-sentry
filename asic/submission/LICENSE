@@ -1,0 +1,17 @@
+MAC Sentry original work
+
+The team has not yet selected an open-source license for its original RTL,
+tests and documentation. This file does not grant a new license for that work.
+An explicit team/faculty licensing decision is required before publication.
+
+Third-party material
+
+The adapted Tiny Tapeout workflow/testbench/Makefile scaffolding is derived from
+TinyTapeout/ttsky-verilog-template at commit
+a42e6662fab316e93b4e26399e21d41664a460b7 and is licensed under Apache-2.0.
+The unchanged src/base.sdc is from LibreLane 3.0.14, copyright 2022-2025
+UmbraLogic Technologies LLC, licensed under Apache-2.0.
+The full Apache license is retained in licenses/Apache-2.0.txt.
+
+This scoped notice is not a completed project licensing decision and must not
+be presented as applying the upstream license to MAC Sentry's original work.

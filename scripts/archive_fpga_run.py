@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Archive a baseline Vivado build and check captured ILA samples. Standard library only."""
+"""Archive a Vivado build and check unprotected, SECDED or hybrid ILA samples."""
 
 import argparse
 import csv
@@ -22,7 +22,8 @@ SIGNALS = ('rst', 'clear', 'start_pulse', 'operand_a', 'operand_b',
            'ready', 'busy', 'done', 'result_valid', 'error', 'accumulator')
 WIDTHS = (1, 1, 1, 8, 8, 1, 1, 1, 1, 2, 24)
 TEST_FIELDS = ('capture', 'sample', 'action', 'initial_acc', 'a', 'b',
-               'expected_acc', 'observed_acc', 'status', 'notes')
+               'expected_acc', 'observed_acc', 'status', 'notes',
+               'fault_mask', 'expected_codeword', 'observed_codeword')
 
 
 def write_csv(path, fields, rows):
@@ -33,12 +34,15 @@ def write_csv(path, fields, rows):
 
 
 def git(*args):
-    result = subprocess.run(['git', '-C', str(ROOT), *args],
+    # Provenance must not refresh the copied Git index. Disabling optional locks
+    # covers status; diff.autoRefreshIndex also needs an explicit override.
+    result = subprocess.run(['git', '--no-optional-locks', '-c',
+                             'diff.autoRefreshIndex=false', '-C', str(ROOT), *args],
                             capture_output=True, text=True, check=False)
     return result.stdout.strip() if result.returncode == 0 else None
 
 
-def read_capture(path):
+def read_capture(path, signals=SIGNALS, widths=WIDTHS):
     """Read Vivado CSV with its radix row; reject missing/unknown signal values."""
     with path.open(newline='') as handle:
         table = list(csv.reader(handle))
@@ -46,7 +50,7 @@ def read_capture(path):
         raise ValueError('Expected a Vivado CSV header, radix row, and samples')
     header, radices = table[:2]
     indices = {}
-    for signal in SIGNALS:
+    for signal in signals:
         matches = [i for i, name in enumerate(header)
                    if re.fullmatch(re.escape(signal) + r'(?:_\d+)?',
                                    re.sub(r'\[.*\]$', '', name.split('/')[-1]))]
@@ -58,7 +62,7 @@ def read_capture(path):
         if len(row) != len(header) or len(radices) != len(header):
             raise ValueError(f'Malformed CSV row {row_number}')
         sample = {'sample': int(row[0]), 'window_sample': int(row[1])}
-        for signal, width in zip(SIGNALS, WIDTHS):
+        for signal, width in zip(signals, widths):
             index = indices[signal]
             radix = radices[index].strip().upper().removeprefix('RADIX - ')
             bases = {'HEX': 16, 'BINARY': 2, 'BIN': 2, 'OCTAL': 8,
@@ -147,9 +151,21 @@ def main():
     parser.add_argument('--capture', type=Path, action='append',
                         help='ILA archive or Vivado CSV; repeatable. Default: project .hw/backup/*.ila')
     parser.add_argument('--impl-run', default='impl_1')
+    parser.add_argument('--variant', choices=('unprotected', 'secded', 'hybrid'), default='unprotected')
     parser.add_argument('--build-store', type=Path,
                         help='Shared build ZIP directory; default: sibling builds/ beside the runs directory')
+    parser.add_argument('--evidence-kind', choices=('unspecified', 'synthetic', 'hardware-capture'),
+                        default='unspecified', help='Hybrid provenance label, not independently verified')
     args = parser.parse_args()
+    if args.variant != 'hybrid' and args.evidence_kind != 'unspecified':
+        parser.error('--evidence-kind is supported only for --variant hybrid')
+    signals, widths = SIGNALS, WIDTHS
+    if args.variant == 'secded':
+        from scripts.secded_capture import EXTRA_SIGNALS, EXTRA_WIDTHS, analyze_samples
+        signals += EXTRA_SIGNALS
+        widths += EXTRA_WIDTHS
+    if args.variant == 'hybrid':
+        from scripts.hybrid_capture import SIGNALS as signals, WIDTHS as widths, analyze_samples, read_hybrid_capture
     project, output = args.project.resolve(), args.output.resolve()
     xprs = list(project.glob('*.xpr'))
     if len(xprs) != 1:
@@ -176,7 +192,7 @@ def main():
         inventory.append({'original': str(source), 'archived': str(relative),
                           'original_mtime_utc': datetime.fromtimestamp(source.stat().st_mtime, timezone.utc).isoformat()})
 
-    for folder in ('rtl', 'model', 'tests', 'scripts', 'spec', 'research'):
+    for folder in ('rtl', 'model', 'tests', 'scripts', 'spec', 'research', 'fpga'):
         for source in sorted((ROOT / folder).rglob('*')):
             if source.is_file() and '__pycache__' not in source.parts:
                 copy(source, Path('sources/core') / source.relative_to(ROOT))
@@ -184,7 +200,7 @@ def main():
         copy(ROOT / name, Path('sources/core') / name)
     copy(xpr, Path('sources/fpga') / xpr.name)
     for source in sorted(project.glob('*.srcs/**/*')):
-        if source.is_file() and source.suffix.lower() in ('.sv', '.v', '.vhd', '.xdc', '.xci', '.tcl', '.coe', '.mem'):
+        if source.is_file() and source.suffix.lower() in ('.sv', '.vh', '.v', '.vhd', '.xdc', '.xci', '.tcl', '.coe', '.mem'):
             copy(source, Path('sources/fpga') / source.relative_to(project))
     # Include external project references too; the original XPR retains its paths.
     referenced = []
@@ -200,21 +216,42 @@ def main():
         source = source.resolve()
         if not source.is_file():
             warnings.append(f'Missing project reference: {value}')
-        elif source.suffix.lower() in ('.sv', '.v', '.vhd', '.xdc', '.xci', '.dcp', '.mem', '.coe'):
+        elif source.suffix.lower() in ('.sv', '.vh', '.v', '.vhd', '.xdc', '.xci', '.dcp', '.mem', '.coe'):
             relative = Path('sources/references') / f'{len(referenced):03d}_{source.name}'
             copy(source, relative)
             referenced.append({'project_path': node.get('Path'), 'archive_path': str(relative)})
     run = project / (xpr.stem + '.runs') / args.impl_run
     for pattern, folder in (('*.rpt', 'reports'), ('*.bit', 'build'), ('*.ltx', 'build'),
-                            ('*_routed.dcp', 'build'), ('runme.log', 'reports')):
+                            ('*_routed.dcp', 'build'), ('*_postroute_physopt.dcp', 'build'),
+                            ('*_postroute_physopted.dcp', 'build'), ('runme.log', 'reports')):
         for source in sorted(run.glob(pattern)):
             copy(source, Path(folder) / source.name)
+    if args.variant == 'hybrid':
+        # create_hybrid_project.tcl writes these explicit M3 outputs at the
+        # project root. Keep them distinct from similarly named run reports.
+        for name, folder in (('timing_summary.rpt', 'reports'),
+                             ('utilization.rpt', 'reports'), ('drc.rpt', 'reports'),
+                             ('methodology.rpt', 'reports'), ('hybrid.ltx', 'build'),
+                             ('build_identity.txt', 'reports')):
+            source = project / name
+            if source.is_file():
+                copy(source, Path(folder) / ('m3_' + name))
+            else:
+                warnings.append(f'Missing M3 project artifact: {name}')
     if not list((output / 'build').glob('*.bit')):
         warnings.append('No bitstream found in selected implementation run')
 
     timing_findings = []
     for report in (output / 'reports').glob('*timing_summary*rpt'):
         text = report.read_text(errors='replace')
+        match = re.search(r'WNS\(ns\).*?\n\s*-[-\s]*\n\s*([\d.-]+)\s+([\d.-]+)\s+(\d+)\s+\d+\s+([\d.-]+)\s+([\d.-]+)\s+(\d+)\s+\d+\s+([\d.-]+)', text)
+        if match:
+            wns, tns, setup_fail, whs, ths, hold_fail, wpws = match.groups()
+            timing_findings.append(dict(report=report.name, check='slack_summary',
+                wns_ns=float(wns), whs_ns=float(whs), wpws_ns=float(wpws),
+                setup_failing_endpoints=int(setup_fail), hold_failing_endpoints=int(hold_fail)))
+            if min(float(wns), float(whs), float(wpws)) < 0:
+                warnings.append(f'{report.name}: negative timing slack; timing closure is not established')
         for check in ('no_clock', 'unconstrained_internal_endpoints'):
             match = re.search(r'checking ' + check + r' \((\d+)\)', text)
             if match:
@@ -228,6 +265,8 @@ def main():
         destination = Path('captures') / label
         (output / destination).mkdir()
         copy(capture, destination / capture.name)
+        if capture.suffix.lower() == '.ila' and capture.with_suffix('.csv').is_file():
+            copy(capture.with_suffix('.csv'), destination / capture.with_suffix('.csv').name)
         csv_path = output / destination / capture.name
         if capture.suffix.lower() == '.ila':
             try:
@@ -240,30 +279,65 @@ def main():
             except (OSError, ValueError, BadZipFile) as exc:
                 warnings.append(f'{label}: cannot extract ILA: {exc}')
         try:
-            samples, found, errors, summary = analyze_capture(csv_path, label)
+            if args.variant == 'hybrid':
+                samples, found, errors, summary = analyze_samples(read_hybrid_capture(csv_path), label)
+            elif args.variant == 'secded':
+                samples, found, errors, summary = analyze_samples(read_capture(csv_path, signals, widths), label)
+            else:
+                samples, found, errors, summary = analyze_capture(csv_path, label)
             write_csv(output / destination / 'samples_decimal.csv',
-                      ('sample', 'window_sample', *SIGNALS), samples)
+                      ('sample', 'window_sample', *signals), samples)
             events.extend(found)
             failures.extend(errors)
             summaries.append(summary)
+            if args.variant == 'hybrid':
+                for status in ('ESCAPE', 'UNFIRED', 'INCOMPLETE'):
+                    count = sum(e['status'] == status for e in found)
+                    if count:
+                        warnings.append(f'{label}: {count} {status} events; inspect tests.csv notes')
+            if errors:
+                warnings.append(f'{label}: {len(errors)} sampled mismatches')
+            if summary.get('unchecked_transitions'):
+                warnings.append(f'{label}: {summary["unchecked_transitions"]} transitions lack captured operand history')
+            if any(e['status'] == 'BLOCKED' for e in found):
+                warnings.append(f'{label}: start request blocked; intended operation was not demonstrated')
             if not summary['complete_mac_transactions']:
                 warnings.append(f'{label}: no complete MAC transaction in capture; does not verify arithmetic')
-        except (OSError, ValueError, IndexError) as exc:
+        except (OSError, ValueError, IndexError, csv.Error) as exc:
             warnings.append(f'{label}: capture could not be analyzed: {exc}')
             summaries.append({'capture': label, 'analysis_error': str(exc)})
     write_csv(output / 'tests.csv', TEST_FIELDS, events)
     write_csv(output / 'mismatches.csv', ('capture', 'sample', 'signal', 'expected', 'observed'), failures)
     write_csv(output / 'capture_summary.csv',
               ('capture', 'samples', 'checked_transitions', 'observed_events',
-               'complete_mac_transactions', 'mismatches', 'initial_accumulator', 'final_accumulator', 'analysis_error'), summaries)
-    write_csv(output / 'test_plan.csv', TEST_FIELDS, [
+               'complete_mac_transactions', 'mismatches', 'initial_accumulator', 'final_accumulator',
+               'unchecked_transitions', 'analysis_error'), summaries)
+    plan = [
         dict(zip(TEST_FIELDS, ('', '', 'mac', 0, 3, -4, -12, '', 'NOT_RECORDED', 'Reset before test'))),
         dict(zip(TEST_FIELDS, ('', '', 'mac', -12, 2, 5, -2, '', 'NOT_RECORDED', 'Continue without clear'))),
         dict(zip(TEST_FIELDS, ('', '', 'clear', -2, '', '', 0, '', 'NOT_RECORDED', 'Clear while idle'))),
-    ])
+    ]
+    if args.variant == 'secded':
+        plan.extend([
+            dict(action='inject_1_bits', initial_acc=1870, fault_mask=mask,
+                 expected_acc=1870, status='NOT_RECORDED',
+                 notes='Capture raw XOR, inject_fired, then idle repair/corrected; see spec/board_validation_backlog.md')
+            for mask in (4, 1, 1 << 29)
+        ])
+        plan.extend([
+            dict(action='inject_2_bits', initial_acc=1870, fault_mask=0x14,
+                 status='NOT_RECORDED', notes='Require persistent damaged storage; readback is diagnostic'),
+            dict(action='mac_rejected', a=15, b=10, status='NOT_RECORDED',
+                 notes='After double injection: done=1, valid=0, error=1, damaged word retained'),
+        ])
+    if args.variant == 'hybrid':
+        plan = [dict(action='H'+str(i), status='NOT_RECORDED',
+                     notes='See spec/hybrid_fpga_setup.md for settings, edges and outcomes; hardware NOT RUN here')
+                for i in range(1,16)]
+    write_csv(output / 'test_plan.csv', TEST_FIELDS, plan)
     (output / 'source_changes.patch').write_text(git('diff', 'HEAD', '--') or '')
     manifest = {'schema': 1, 'created_utc': datetime.now(timezone.utc).isoformat(),
-                'variant': 'unprotected', 'board_reported_by_user': 'ZedBoard',
+                'variant': args.variant, 'board_reported_by_user': 'ZedBoard',
                 'operand_width': 8, 'acc_width': 24, 'nominal_clock_hz': 100_000_000,
                 'clock_frequency_basis': 'Board oscillator; not inferred from timing closure',
                 'project': str(xpr), 'implementation_run': args.impl_run,
@@ -273,13 +347,22 @@ def main():
                 'resource_scope': 'Instrumented FPGA design including VIO, ILA, debug hub, and wrapper',
                 'timing_findings': timing_findings, 'captures': summaries,
                 'warnings': warnings, 'copied_files': inventory, 'project_references': referenced}
+    if args.variant == 'hybrid':
+        manifest.update(evidence_kind=args.evidence_kind, max_retries=2,
+                        clock_frequency_basis='M3 board design target; not a measured capture frequency',
+                        board_reported_by_user=None if args.evidence_kind != 'hardware-capture' else 'ZedBoard (user label)',
+                        hybrid_probe_contract='M3 fixed 44 probes, pre-edge, 8/24/retries2')
+        warnings.append('Hybrid evidence kind: '+args.evidence_kind+'; synthetic fixtures are not hardware evidence')
     report_headers = []
     for report in sorted((output / 'reports').glob('*.rpt')):
         report_headers.extend(line.strip() for line in report.read_text(errors='replace').splitlines()
                               if line.startswith(('| Tool Version', '| Device', '| Design State')))
     manifest['report_metadata'] = sorted(set(report_headers))
     (output / 'README.md').write_text(
-        '# Unprotected MAC hardware archive\n\n'
+        f'# {args.variant} MAC capture archive\n\n' if args.variant == 'hybrid' else f'# {args.variant} MAC hardware archive\n\n'
+    )
+    with (output / 'README.md').open('a') as readme:
+        readme.write(
         'This archive preserves existing artifacts; it does not run or program hardware.\n\n'
         '- `tests.csv`: events actually visible in saved captures, checked against the Python model.\n'
         '- `capture_summary.csv`: sample/transition/event counts. An idle capture is not a MAC test.\n'

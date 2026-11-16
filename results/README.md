@@ -1,4 +1,17 @@
-# FPGA results
+# Experiment results
+
+Start with [published/](published/README.md): this committed, hash-checked selection
+contains the important historical ASIC, FPGA, pilot and cost results, with raw
+supporting reports/traces and source identities. It works without a local build
+cache: run `make test-evidence` from the repository root. See the
+[results guide](../docs/results.md) for measured scope and limitations.
+
+The optional local directories below contain larger original FPGA archives. They
+are Git-ignored, backed up separately, and absent from a fresh clone. Their absence
+does not prevent running a new simulation/implementation or viewing published
+results. The integrity command below checks whichever raw archives are present;
+it is not a substitute for `make test-evidence` on the committed selection.
+
 
 - `runs/`: one directory per measurement run. Start with `tests.csv`, `capture_summary.csv`, and `manifest.json`.
 - `builds/`: compressed build artifacts and reports, shared only when their paths and SHA-256 hashes are identical.

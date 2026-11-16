@@ -1,0 +1,781 @@
+{
+  "schema": 1,
+  "created_utc": "2026-11-06T16:27:04.280920+00:00",
+  "variant": "secded",
+  "board_reported_by_user": "ZedBoard",
+  "operand_width": 8,
+  "acc_width": 24,
+  "nominal_clock_hz": 100000000,
+  "clock_frequency_basis": "Board oscillator; not inferred from timing closure",
+  "project": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.xpr",
+  "implementation_run": "impl_secded_perf",
+  "git_revision": "1901fb4b9d87daa3c73dce023bf6291b69ba5346",
+  "git_status": "M scripts/archive_fpga_run.py\n?? docs/\n?? scripts/secded_capture.py\n?? tests/test_secded_capture.py",
+  "source_identity_note": "Snapshot at archive time; not proof these sources produced the bitstream or capture.",
+  "capture_build_identity_note": "Files collected together; programmed bitstream/capture association not independently verified.",
+  "resource_scope": "Instrumented FPGA design including VIO, ILA, debug hub, and wrapper",
+  "timing_findings": [
+    {
+      "report": "zedboard_secded_top_timing_summary_postroute_physopted.rpt",
+      "check": "slack_summary",
+      "wns_ns": 0.227,
+      "whs_ns": 0.052,
+      "wpws_ns": 3.75,
+      "setup_failing_endpoints": 0,
+      "hold_failing_endpoints": 0
+    },
+    {
+      "report": "zedboard_secded_top_timing_summary_postroute_physopted.rpt",
+      "check": "no_clock",
+      "count": 0
+    },
+    {
+      "report": "zedboard_secded_top_timing_summary_postroute_physopted.rpt",
+      "check": "unconstrained_internal_endpoints",
+      "count": 0
+    },
+    {
+      "report": "zedboard_secded_top_timing_summary_routed.rpt",
+      "check": "slack_summary",
+      "wns_ns": 0.227,
+      "whs_ns": 0.052,
+      "wpws_ns": 3.75,
+      "setup_failing_endpoints": 0,
+      "hold_failing_endpoints": 0
+    },
+    {
+      "report": "zedboard_secded_top_timing_summary_routed.rpt",
+      "check": "no_clock",
+      "count": 0
+    },
+    {
+      "report": "zedboard_secded_top_timing_summary_routed.rpt",
+      "check": "unconstrained_internal_endpoints",
+      "count": 0
+    }
+  ],
+  "captures": [
+    {
+      "capture": "001_A1_mac_34x55",
+      "samples": 1024,
+      "checked_transitions": 1023,
+      "unchecked_transitions": 0,
+      "observed_events": 1,
+      "complete_mac_transactions": 1,
+      "mismatches": 0,
+      "initial_accumulator": 0,
+      "final_accumulator": 1870
+    },
+    {
+      "capture": "002_A2_mac_plus15x10",
+      "samples": 1024,
+      "checked_transitions": 1023,
+      "unchecked_transitions": 0,
+      "observed_events": 1,
+      "complete_mac_transactions": 1,
+      "mismatches": 0,
+      "initial_accumulator": 1870,
+      "final_accumulator": 2020
+    },
+    {
+      "capture": "003_A3_mac_clr3x-4",
+      "samples": 1024,
+      "checked_transitions": 1023,
+      "unchecked_transitions": 0,
+      "observed_events": 2,
+      "complete_mac_transactions": 0,
+      "mismatches": 0,
+      "initial_accumulator": 0,
+      "final_accumulator": 0
+    },
+    {
+      "capture": "004_A4_mac_clr-128x-128",
+      "samples": 1024,
+      "checked_transitions": 1023,
+      "unchecked_transitions": 0,
+      "observed_events": 1,
+      "complete_mac_transactions": 1,
+      "mismatches": 0,
+      "initial_accumulator": 0,
+      "final_accumulator": 16384
+    },
+    {
+      "capture": "005_B1_single_data_bit",
+      "samples": 1024,
+      "checked_transitions": 1023,
+      "unchecked_transitions": 0,
+      "observed_events": 2,
+      "complete_mac_transactions": 0,
+      "mismatches": 0,
+      "initial_accumulator": 1870,
+      "final_accumulator": 1870
+    },
+    {
+      "capture": "006_B2_single_hamming_bit",
+      "samples": 1024,
+      "checked_transitions": 1023,
+      "unchecked_transitions": 0,
+      "observed_events": 2,
+      "complete_mac_transactions": 0,
+      "mismatches": 0,
+      "initial_accumulator": 1870,
+      "final_accumulator": 1870
+    },
+    {
+      "capture": "007_B3_single_overall_parity",
+      "samples": 1024,
+      "checked_transitions": 1023,
+      "unchecked_transitions": 0,
+      "observed_events": 2,
+      "complete_mac_transactions": 0,
+      "mismatches": 0,
+      "initial_accumulator": 1870,
+      "final_accumulator": 1870
+    }
+  ],
+  "warnings": [
+    "003_A3_mac_clr3x-4: start request blocked; intended operation was not demonstrated",
+    "003_A3_mac_clr3x-4: no complete MAC transaction in capture; does not verify arithmetic",
+    "005_B1_single_data_bit: no complete MAC transaction in capture; does not verify arithmetic",
+    "006_B2_single_hamming_bit: no complete MAC transaction in capture; does not verify arithmetic",
+    "007_B3_single_overall_parity: no complete MAC transaction in capture; does not verify arithmetic"
+  ],
+  "copied_files": [
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/rtl/mac_secded.sv",
+      "archived": "sources/core/rtl/mac_secded.sv",
+      "original_mtime_utc": "2026-10-14T17:08:59.108444+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/rtl/mac_secded_datapath.vh",
+      "archived": "sources/core/rtl/mac_secded_datapath.vh",
+      "original_mtime_utc": "2026-10-14T17:08:59.108011+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/rtl/mac_secded_injectable.sv",
+      "archived": "sources/core/rtl/mac_secded_injectable.sv",
+      "original_mtime_utc": "2026-10-14T17:08:59.206008+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/rtl/mac_unprotected.sv",
+      "archived": "sources/core/rtl/mac_unprotected.sv",
+      "original_mtime_utc": "2026-09-23T17:25:54.167255+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/rtl/secded_decoder.sv",
+      "archived": "sources/core/rtl/secded_decoder.sv",
+      "original_mtime_utc": "2026-10-14T16:45:27.757008+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/rtl/secded_encoder.sv",
+      "archived": "sources/core/rtl/secded_encoder.sv",
+      "original_mtime_utc": "2026-10-14T16:45:27.679009+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/rtl/secded_functions.vh",
+      "archived": "sources/core/rtl/secded_functions.vh",
+      "original_mtime_utc": "2026-10-14T16:45:27.547998+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/model/__init__.py",
+      "archived": "sources/core/model/__init__.py",
+      "original_mtime_utc": "2026-09-23T17:25:33.668885+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/model/mac.py",
+      "archived": "sources/core/model/mac.py",
+      "original_mtime_utc": "2026-09-23T17:25:33.740883+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/model/mac_secded.py",
+      "archived": "sources/core/model/mac_secded.py",
+      "original_mtime_utc": "2026-10-14T16:51:28.489581+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/model/secded.py",
+      "archived": "sources/core/model/secded.py",
+      "original_mtime_utc": "2026-10-14T11:52:06.527724+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/tests/mac_tb.cpp",
+      "archived": "sources/core/tests/mac_tb.cpp",
+      "original_mtime_utc": "2026-09-23T17:25:34.047873+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/tests/mac_tb.sv",
+      "archived": "sources/core/tests/mac_tb.sv",
+      "original_mtime_utc": "2026-10-14T05:16:19.195976+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/tests/secded_tb.cpp",
+      "archived": "sources/core/tests/secded_tb.cpp",
+      "original_mtime_utc": "2026-10-14T16:47:10.211467+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/tests/secded_verify_top.sv",
+      "archived": "sources/core/tests/secded_verify_top.sv",
+      "original_mtime_utc": "2026-10-14T16:45:27.907006+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/tests/test_compact_results.py",
+      "archived": "sources/core/tests/test_compact_results.py",
+      "original_mtime_utc": "2026-10-14T09:03:00.784986+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/tests/test_fpga_archive.py",
+      "archived": "sources/core/tests/test_fpga_archive.py",
+      "original_mtime_utc": "2026-10-14T08:41:47.578920+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/tests/test_mac_secded.py",
+      "archived": "sources/core/tests/test_mac_secded.py",
+      "original_mtime_utc": "2026-10-14T16:40:38.927354+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/tests/test_model.py",
+      "archived": "sources/core/tests/test_model.py",
+      "original_mtime_utc": "2026-09-23T17:25:33.857879+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/tests/test_secded.py",
+      "archived": "sources/core/tests/test_secded.py",
+      "original_mtime_utc": "2026-10-14T16:40:38.847355+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/tests/test_secded_capture.py",
+      "archived": "sources/core/tests/test_secded_capture.py",
+      "original_mtime_utc": "2026-11-06T16:26:51.043437+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/tests/zedboard_debug_models.sv",
+      "archived": "sources/core/tests/zedboard_debug_models.sv",
+      "original_mtime_utc": "2026-10-14T17:08:59.633998+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/tests/zedboard_secded_tb.sv",
+      "archived": "sources/core/tests/zedboard_secded_tb.sv",
+      "original_mtime_utc": "2026-10-14T17:08:59.704997+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/scripts/archive_fpga_run.py",
+      "archived": "sources/core/scripts/archive_fpga_run.py",
+      "original_mtime_utc": "2026-11-06T16:26:12.718780+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/scripts/check_secded_harness.py",
+      "archived": "sources/core/scripts/check_secded_harness.py",
+      "original_mtime_utc": "2026-10-14T16:48:33.310216+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/scripts/compact_fpga_results.py",
+      "archived": "sources/core/scripts/compact_fpga_results.py",
+      "original_mtime_utc": "2026-10-14T09:02:26.354378+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/scripts/export_ila_capture.tcl",
+      "archived": "sources/core/scripts/export_ila_capture.tcl",
+      "original_mtime_utc": "2026-10-14T08:41:47.551920+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/scripts/generate_secded_vectors.py",
+      "archived": "sources/core/scripts/generate_secded_vectors.py",
+      "original_mtime_utc": "2026-10-14T16:47:10.140468+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/scripts/generate_vectors.py",
+      "archived": "sources/core/scripts/generate_vectors.py",
+      "original_mtime_utc": "2026-09-23T17:25:33.974875+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/scripts/provenance.py",
+      "archived": "sources/core/scripts/provenance.py",
+      "original_mtime_utc": "2026-10-14T17:11:13.657864+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/scripts/secded_capture.py",
+      "archived": "sources/core/scripts/secded_capture.py",
+      "original_mtime_utc": "2026-11-06T16:26:12.649780+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/scripts/setup_vivado_sim.tcl",
+      "archived": "sources/core/scripts/setup_vivado_sim.tcl",
+      "original_mtime_utc": "2026-10-14T05:19:04.241043+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/spec/mac_interface_and_fault_model.md",
+      "archived": "sources/core/spec/mac_interface_and_fault_model.md",
+      "original_mtime_utc": "2026-10-14T16:51:28.636579+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/spec/secded_accumulator.md",
+      "archived": "sources/core/spec/secded_accumulator.md",
+      "original_mtime_utc": "2026-10-14T17:11:13.735862+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/spec/secded_fpga_setup.md",
+      "archived": "sources/core/spec/secded_fpga_setup.md",
+      "original_mtime_utc": "2026-10-14T17:11:13.882859+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/research/baseline_validation.md",
+      "archived": "sources/core/research/baseline_validation.md",
+      "original_mtime_utc": "2026-09-23T17:28:33.025716+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/research/decision_log.md",
+      "archived": "sources/core/research/decision_log.md",
+      "original_mtime_utc": "2026-10-14T17:11:13.952857+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/research/secded_model_validation.md",
+      "archived": "sources/core/research/secded_model_validation.md",
+      "original_mtime_utc": "2026-10-14T16:41:49.491292+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/research/secded_rtl_validation.md",
+      "archived": "sources/core/research/secded_rtl_validation.md",
+      "original_mtime_utc": "2026-10-14T16:51:28.953574+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/fpga/zedboard/zedboard_100mhz.xdc",
+      "archived": "sources/core/fpga/zedboard/zedboard_100mhz.xdc",
+      "original_mtime_utc": "2026-10-14T17:08:59.562000+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/fpga/zedboard/zedboard_secded_top.sv",
+      "archived": "sources/core/fpga/zedboard/zedboard_secded_top.sv",
+      "original_mtime_utc": "2026-10-14T17:11:13.502868+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/README.md",
+      "archived": "sources/core/README.md",
+      "original_mtime_utc": "2026-10-14T17:11:13.812861+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/Makefile",
+      "archived": "sources/core/Makefile",
+      "original_mtime_utc": "2026-10-14T17:11:13.583866+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/.gitignore",
+      "archived": "sources/core/.gitignore",
+      "original_mtime_utc": "2026-10-14T09:02:26.413378+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.xpr",
+      "archived": "sources/fpga/mac_sentry_secded_fpga.xpr",
+      "original_mtime_utc": "2026-10-14T17:34:26.958025+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.srcs/sources_1/ip/ila_secded/ila_secded.xci",
+      "archived": "sources/fpga/mac_sentry_secded_fpga.srcs/sources_1/ip/ila_secded/ila_secded.xci",
+      "original_mtime_utc": "2026-10-14T17:05:36.533747+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.srcs/sources_1/ip/vio_secded/vio_secded.xci",
+      "archived": "sources/fpga/mac_sentry_secded_fpga.srcs/sources_1/ip/vio_secded/vio_secded.xci",
+      "original_mtime_utc": "2026-10-14T17:02:28.443614+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/rtl/mac_secded.sv",
+      "archived": "sources/references/000_mac_secded.sv",
+      "original_mtime_utc": "2026-10-14T17:08:59.108444+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/rtl/mac_secded_datapath.vh",
+      "archived": "sources/references/001_mac_secded_datapath.vh",
+      "original_mtime_utc": "2026-10-14T17:08:59.108011+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/rtl/secded_functions.vh",
+      "archived": "sources/references/002_secded_functions.vh",
+      "original_mtime_utc": "2026-10-14T16:45:27.547998+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/rtl/mac_secded_injectable.sv",
+      "archived": "sources/references/003_mac_secded_injectable.sv",
+      "original_mtime_utc": "2026-10-14T17:08:59.206008+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/rtl/secded_decoder.sv",
+      "archived": "sources/references/004_secded_decoder.sv",
+      "original_mtime_utc": "2026-10-14T16:45:27.757008+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/rtl/secded_encoder.sv",
+      "archived": "sources/references/005_secded_encoder.sv",
+      "original_mtime_utc": "2026-10-14T16:45:27.679009+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/fpga/zedboard/zedboard_secded_top.sv",
+      "archived": "sources/references/006_zedboard_secded_top.sv",
+      "original_mtime_utc": "2026-10-14T17:11:13.502868+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/fpga/zedboard/zedboard_100mhz.xdc",
+      "archived": "sources/references/007_zedboard_100mhz.xdc",
+      "original_mtime_utc": "2026-10-14T17:08:59.562000+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.srcs/sources_1/ip/vio_secded/vio_secded.xci",
+      "archived": "sources/references/008_vio_secded.xci",
+      "original_mtime_utc": "2026-10-14T17:02:28.443614+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.srcs/sources_1/ip/ila_secded/ila_secded.xci",
+      "archived": "sources/references/009_ila_secded.xci",
+      "original_mtime_utc": "2026-10-14T17:05:36.533747+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.runs/impl_secded_perf/zedboard_secded_top_bus_skew_postroute_physopted.rpt",
+      "archived": "reports/zedboard_secded_top_bus_skew_postroute_physopted.rpt",
+      "original_mtime_utc": "2026-10-14T17:30:53.946076+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.runs/impl_secded_perf/zedboard_secded_top_bus_skew_routed.rpt",
+      "archived": "reports/zedboard_secded_top_bus_skew_routed.rpt",
+      "original_mtime_utc": "2026-10-14T17:30:50.817121+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.runs/impl_secded_perf/zedboard_secded_top_clock_utilization_routed.rpt",
+      "archived": "reports/zedboard_secded_top_clock_utilization_routed.rpt",
+      "original_mtime_utc": "2026-10-14T17:30:52.550096+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.runs/impl_secded_perf/zedboard_secded_top_control_sets_placed.rpt",
+      "archived": "reports/zedboard_secded_top_control_sets_placed.rpt",
+      "original_mtime_utc": "2026-10-14T17:30:03.061805+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.runs/impl_secded_perf/zedboard_secded_top_drc_opted.rpt",
+      "archived": "reports/zedboard_secded_top_drc_opted.rpt",
+      "original_mtime_utc": "2026-10-14T17:29:22.210397+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.runs/impl_secded_perf/zedboard_secded_top_drc_routed.rpt",
+      "archived": "reports/zedboard_secded_top_drc_routed.rpt",
+      "original_mtime_utc": "2026-10-14T17:30:47.077174+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.runs/impl_secded_perf/zedboard_secded_top_io_placed.rpt",
+      "archived": "reports/zedboard_secded_top_io_placed.rpt",
+      "original_mtime_utc": "2026-10-14T17:30:03.221803+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.runs/impl_secded_perf/zedboard_secded_top_methodology_drc_routed.rpt",
+      "archived": "reports/zedboard_secded_top_methodology_drc_routed.rpt",
+      "original_mtime_utc": "2026-10-14T17:30:49.575139+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.runs/impl_secded_perf/zedboard_secded_top_power_routed.rpt",
+      "archived": "reports/zedboard_secded_top_power_routed.rpt",
+      "original_mtime_utc": "2026-10-14T17:30:52.039103+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.runs/impl_secded_perf/zedboard_secded_top_route_status.rpt",
+      "archived": "reports/zedboard_secded_top_route_status.rpt",
+      "original_mtime_utc": "2026-10-14T17:30:50.708122+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.runs/impl_secded_perf/zedboard_secded_top_timing_summary_postroute_physopted.rpt",
+      "archived": "reports/zedboard_secded_top_timing_summary_postroute_physopted.rpt",
+      "original_mtime_utc": "2026-10-14T17:30:53.847077+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.runs/impl_secded_perf/zedboard_secded_top_timing_summary_routed.rpt",
+      "archived": "reports/zedboard_secded_top_timing_summary_routed.rpt",
+      "original_mtime_utc": "2026-10-14T17:30:50.646123+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.runs/impl_secded_perf/zedboard_secded_top_utilization_placed.rpt",
+      "archived": "reports/zedboard_secded_top_utilization_placed.rpt",
+      "original_mtime_utc": "2026-10-14T17:30:03.164804+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.runs/impl_secded_perf/zedboard_secded_top.bit",
+      "archived": "build/zedboard_secded_top.bit",
+      "original_mtime_utc": "2026-10-14T17:34:16.986167+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.runs/impl_secded_perf/debug_nets.ltx",
+      "archived": "build/debug_nets.ltx",
+      "original_mtime_utc": "2026-10-14T17:34:17+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.runs/impl_secded_perf/zedboard_secded_top.ltx",
+      "archived": "build/zedboard_secded_top.ltx",
+      "original_mtime_utc": "2026-10-14T17:34:17.101166+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.runs/impl_secded_perf/zedboard_secded_top_routed.dcp",
+      "archived": "build/zedboard_secded_top_routed.dcp",
+      "original_mtime_utc": "2026-10-14T17:30:53.358084+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.runs/impl_secded_perf/zedboard_secded_top_postroute_physopt.dcp",
+      "archived": "build/zedboard_secded_top_postroute_physopt.dcp",
+      "original_mtime_utc": "2026-10-14T17:30:54.765064+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_secded_fpga/mac_sentry_secded_fpga.runs/impl_secded_perf/runme.log",
+      "archived": "reports/runme.log",
+      "original_mtime_utc": "2026-10-14T17:34:17.103873+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/results/captures/secded_zedboard_001/A1_mac_34x55.ila",
+      "archived": "captures/001_A1_mac_34x55/A1_mac_34x55.ila",
+      "original_mtime_utc": "2026-10-15T14:12:41.968040+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/results/captures/secded_zedboard_001/A1_mac_34x55.csv",
+      "archived": "captures/001_A1_mac_34x55/A1_mac_34x55.csv",
+      "original_mtime_utc": "2026-10-15T14:12:41.990039+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/results/captures/secded_zedboard_001/A2_mac_plus15x10.ila",
+      "archived": "captures/002_A2_mac_plus15x10/A2_mac_plus15x10.ila",
+      "original_mtime_utc": "2026-10-15T14:13:26.472128+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/results/captures/secded_zedboard_001/A2_mac_plus15x10.csv",
+      "archived": "captures/002_A2_mac_plus15x10/A2_mac_plus15x10.csv",
+      "original_mtime_utc": "2026-10-15T14:13:26.494128+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/results/captures/secded_zedboard_001/A3_mac_clr3x-4.ila",
+      "archived": "captures/003_A3_mac_clr3x-4/A3_mac_clr3x-4.ila",
+      "original_mtime_utc": "2026-10-15T14:14:03.930362+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/results/captures/secded_zedboard_001/A3_mac_clr3x-4.csv",
+      "archived": "captures/003_A3_mac_clr3x-4/A3_mac_clr3x-4.csv",
+      "original_mtime_utc": "2026-10-15T14:14:03.955361+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/results/captures/secded_zedboard_001/A4_mac_clr-128x-128.ila",
+      "archived": "captures/004_A4_mac_clr-128x-128/A4_mac_clr-128x-128.ila",
+      "original_mtime_utc": "2026-10-15T14:14:43.795546+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/results/captures/secded_zedboard_001/A4_mac_clr-128x-128.csv",
+      "archived": "captures/004_A4_mac_clr-128x-128/A4_mac_clr-128x-128.csv",
+      "original_mtime_utc": "2026-10-15T14:14:43.818545+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/results/captures/secded_zedboard_001/B1_single_data_bit.ila",
+      "archived": "captures/005_B1_single_data_bit/B1_single_data_bit.ila",
+      "original_mtime_utc": "2026-10-15T14:24:27.376717+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/results/captures/secded_zedboard_001/B1_single_data_bit.csv",
+      "archived": "captures/005_B1_single_data_bit/B1_single_data_bit.csv",
+      "original_mtime_utc": "2026-10-15T14:24:27.401717+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/results/captures/secded_zedboard_001/B2_single_hamming_bit.ila",
+      "archived": "captures/006_B2_single_hamming_bit/B2_single_hamming_bit.ila",
+      "original_mtime_utc": "2026-10-15T14:26:08.528778+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/results/captures/secded_zedboard_001/B2_single_hamming_bit.csv",
+      "archived": "captures/006_B2_single_hamming_bit/B2_single_hamming_bit.csv",
+      "original_mtime_utc": "2026-10-15T14:26:08.546778+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/results/captures/secded_zedboard_001/B3_single_overall_parity.ila",
+      "archived": "captures/007_B3_single_overall_parity/B3_single_overall_parity.ila",
+      "original_mtime_utc": "2026-10-15T14:27:16.704060+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/results/captures/secded_zedboard_001/B3_single_overall_parity.csv",
+      "archived": "captures/007_B3_single_overall_parity/B3_single_overall_parity.csv",
+      "original_mtime_utc": "2026-10-15T14:27:16.728060+00:00"
+    }
+  ],
+  "project_references": [
+    {
+      "project_path": "$PPRDIR/../mac_sentry/rtl/mac_secded.sv",
+      "archive_path": "sources/references/000_mac_secded.sv"
+    },
+    {
+      "project_path": "$PPRDIR/../mac_sentry/rtl/mac_secded_datapath.vh",
+      "archive_path": "sources/references/001_mac_secded_datapath.vh"
+    },
+    {
+      "project_path": "$PPRDIR/../mac_sentry/rtl/secded_functions.vh",
+      "archive_path": "sources/references/002_secded_functions.vh"
+    },
+    {
+      "project_path": "$PPRDIR/../mac_sentry/rtl/mac_secded_injectable.sv",
+      "archive_path": "sources/references/003_mac_secded_injectable.sv"
+    },
+    {
+      "project_path": "$PPRDIR/../mac_sentry/rtl/secded_decoder.sv",
+      "archive_path": "sources/references/004_secded_decoder.sv"
+    },
+    {
+      "project_path": "$PPRDIR/../mac_sentry/rtl/secded_encoder.sv",
+      "archive_path": "sources/references/005_secded_encoder.sv"
+    },
+    {
+      "project_path": "$PPRDIR/../mac_sentry/fpga/zedboard/zedboard_secded_top.sv",
+      "archive_path": "sources/references/006_zedboard_secded_top.sv"
+    },
+    {
+      "project_path": "$PPRDIR/../mac_sentry/fpga/zedboard/zedboard_100mhz.xdc",
+      "archive_path": "sources/references/007_zedboard_100mhz.xdc"
+    },
+    {
+      "project_path": "$PSRCDIR/sources_1/ip/vio_secded/vio_secded.xci",
+      "archive_path": "sources/references/008_vio_secded.xci"
+    },
+    {
+      "project_path": "$PSRCDIR/sources_1/ip/ila_secded/ila_secded.xci",
+      "archive_path": "sources/references/009_ila_secded.xci"
+    }
+  ],
+  "report_metadata": [
+    "| Design State     : routed",
+    "| Design State : Fully Placed",
+    "| Design State : Fully Routed",
+    "| Design State : Physopt postRoute",
+    "| Design State : Routed",
+    "| Design State : Synthesized",
+    "| Device                    : xc7z020",
+    "| Device           : xc7z020clg484-1",
+    "| Device       : 7z020-clg484",
+    "| Device       : xc7z020",
+    "| Device       : xc7z020clg484-1",
+    "| Device Static (W)        | 0.103        |",
+    "| Device models               | High       | Device models are Production                   |                                                                                                            |",
+    "| Tool Version              : Vivado v.2025.2.1 (lin64) Build 6403652 Thu Mar 19 13:47:00 MDT 2026",
+    "| Tool Version     : Vivado v.2025.2.1 (lin64) Build 6403652 Thu Mar 19 13:47:00 MDT 2026",
+    "| Tool Version : Vivado v.2025.2.1 (lin64) Build 6403652 Thu Mar 19 13:47:00 MDT 2026"
+  ],
+  "file_sha256": {
+    "README.md": "88d8f0800414706e4ca8aa3e7ddb7454e8cd60fce796e054edb03ae9d7a577d3",
+    "build/debug_nets.ltx": "83d4a3fb023f3fcd341c63fed4914b9a7ef00c5be2eeadd584daf3f7d59c6a25",
+    "build/zedboard_secded_top.bit": "8080f7d3ad4e587b7dc178012fc8891cdb6f49b764ce9dc60c8109994148fffb",
+    "build/zedboard_secded_top.ltx": "83d4a3fb023f3fcd341c63fed4914b9a7ef00c5be2eeadd584daf3f7d59c6a25",
+    "build/zedboard_secded_top_postroute_physopt.dcp": "6d363e109413d26abf2cd26ad027a0f604e9da37fdb3307c961609453915228c",
+    "build/zedboard_secded_top_routed.dcp": "6be894e1c4beb32052150aaa0ec813e2923f77f7ca236e5d3a0a3c829c99de16",
+    "capture_summary.csv": "3eebef97ab974c375c0f1843faeb54f183fee854076bf58565b933346f2707b1",
+    "captures/001_A1_mac_34x55/A1_mac_34x55.csv": "f220bb79bed14091bbc8619ec37771cc57fba783e01fc04fd03fc090af56c28b",
+    "captures/001_A1_mac_34x55/A1_mac_34x55.ila": "841a9ceb59133260821c8df4dc290e221e1f9ed6e76c4f0e71793114d466df5c",
+    "captures/001_A1_mac_34x55/probes.ltx": "5f0ad2e7485de89875c7cceafd600e6643bc04fee17b935d958dc3663a7cd72b",
+    "captures/001_A1_mac_34x55/samples_decimal.csv": "ad577b8064228ead6a4bcbb0b1b8fa21bbc23122bc86f8dade52978f6754941a",
+    "captures/001_A1_mac_34x55/waveform.csv": "f220bb79bed14091bbc8619ec37771cc57fba783e01fc04fd03fc090af56c28b",
+    "captures/001_A1_mac_34x55/waveform.vcd": "c1d7f1072a01cc99d2dfb85d2a1e4823ef0107e2bdf082b686db4c3450354e23",
+    "captures/002_A2_mac_plus15x10/A2_mac_plus15x10.csv": "e3335329ec3c8adab087526448270deef0bca017bb75c805936e2cc79bf07af6",
+    "captures/002_A2_mac_plus15x10/A2_mac_plus15x10.ila": "97efebaebb060e2fc1d6a8171efb0abc23957dca5e1df7f1f8144fe11eb5c4f6",
+    "captures/002_A2_mac_plus15x10/probes.ltx": "5f0ad2e7485de89875c7cceafd600e6643bc04fee17b935d958dc3663a7cd72b",
+    "captures/002_A2_mac_plus15x10/samples_decimal.csv": "37e2e5fbf5d9b7a7bc27d9d801ca47824311c48a929447d417ff10520e96e99b",
+    "captures/002_A2_mac_plus15x10/waveform.csv": "e3335329ec3c8adab087526448270deef0bca017bb75c805936e2cc79bf07af6",
+    "captures/002_A2_mac_plus15x10/waveform.vcd": "856044b346dd6d6eb67acb095b90fd82fe9d6af91489b0c9e38db438bcde0c96",
+    "captures/003_A3_mac_clr3x-4/A3_mac_clr3x-4.csv": "ac56a7ded6b98304ee3e96b3744e366ce97b25818da356d23a58ddf2292783bc",
+    "captures/003_A3_mac_clr3x-4/A3_mac_clr3x-4.ila": "c5702042edd770e8143532e040608784b17a12c63b23605e1c91e8367d67f853",
+    "captures/003_A3_mac_clr3x-4/probes.ltx": "5f0ad2e7485de89875c7cceafd600e6643bc04fee17b935d958dc3663a7cd72b",
+    "captures/003_A3_mac_clr3x-4/samples_decimal.csv": "804eecd342ff8da926e65846cb8c7fd1e946f8d27d0128ddeea2044dbd35a825",
+    "captures/003_A3_mac_clr3x-4/waveform.csv": "ac56a7ded6b98304ee3e96b3744e366ce97b25818da356d23a58ddf2292783bc",
+    "captures/003_A3_mac_clr3x-4/waveform.vcd": "8f833afbd6487fe12285cbfba433cc8b8f88ba37875af8b4853dae2c4d11120b",
+    "captures/004_A4_mac_clr-128x-128/A4_mac_clr-128x-128.csv": "ffcf86ab85f6de57351457e2ee2d1783a4a9bb4ad96d202b91edf654ec3987c2",
+    "captures/004_A4_mac_clr-128x-128/A4_mac_clr-128x-128.ila": "fc255c8efe4f31d5b3f05bcb5659022a7e7a6877f434a8abb7626661fb9adc4e",
+    "captures/004_A4_mac_clr-128x-128/probes.ltx": "5f0ad2e7485de89875c7cceafd600e6643bc04fee17b935d958dc3663a7cd72b",
+    "captures/004_A4_mac_clr-128x-128/samples_decimal.csv": "b705cedea7a6dd6835e2660e2f6eacdb9451815afa19abe79bc1bd8fb5e82e3d",
+    "captures/004_A4_mac_clr-128x-128/waveform.csv": "ffcf86ab85f6de57351457e2ee2d1783a4a9bb4ad96d202b91edf654ec3987c2",
+    "captures/004_A4_mac_clr-128x-128/waveform.vcd": "b2a395d38419b9d2fcbce2d155773609fce45a9d0a5a08dd0d504a26bcdb8d37",
+    "captures/005_B1_single_data_bit/B1_single_data_bit.csv": "ca98c2aa9ecbd1c7e995fcc0d293914221ef089f8db766dbf8d980c166065204",
+    "captures/005_B1_single_data_bit/B1_single_data_bit.ila": "5004da77b3245798c807b95b32855b0bfbcbeefc1f54754147663eafe8b7c899",
+    "captures/005_B1_single_data_bit/probes.ltx": "5f0ad2e7485de89875c7cceafd600e6643bc04fee17b935d958dc3663a7cd72b",
+    "captures/005_B1_single_data_bit/samples_decimal.csv": "188b01281bddfc3a8f72a043a1abd21f083e1534ff1e098366b6a2a65f8f9c39",
+    "captures/005_B1_single_data_bit/waveform.csv": "ca98c2aa9ecbd1c7e995fcc0d293914221ef089f8db766dbf8d980c166065204",
+    "captures/005_B1_single_data_bit/waveform.vcd": "ee9345430c5bdf8dc9560f1571597713299d5d9d310f2919f84ec5fa4084f81e",
+    "captures/006_B2_single_hamming_bit/B2_single_hamming_bit.csv": "2945493428e8e91cf1bcfeabb99cce9dee0d4768bf690b8368fbee345229eb1d",
+    "captures/006_B2_single_hamming_bit/B2_single_hamming_bit.ila": "7c9e86f6ea6dfbfbf4631413f1a712671933a2dd705a4dc9e9a72650330037a3",
+    "captures/006_B2_single_hamming_bit/probes.ltx": "5f0ad2e7485de89875c7cceafd600e6643bc04fee17b935d958dc3663a7cd72b",
+    "captures/006_B2_single_hamming_bit/samples_decimal.csv": "4ba5ebd33f08866f8712509c9e0545ac7c3245cc8b99f55020ac959186579f0b",
+    "captures/006_B2_single_hamming_bit/waveform.csv": "2945493428e8e91cf1bcfeabb99cce9dee0d4768bf690b8368fbee345229eb1d",
+    "captures/006_B2_single_hamming_bit/waveform.vcd": "0dd2faa353acf42624c84cc8d9908bc5ad52651e8086d305ce5e2aad68185616",
+    "captures/007_B3_single_overall_parity/B3_single_overall_parity.csv": "d5e3b4d89fe1f1273a479ecd75e3b5676424eec41d3347a39c160a77a1c23351",
+    "captures/007_B3_single_overall_parity/B3_single_overall_parity.ila": "c5ba3d4d8104c534b11a84d256df18eca46f47d5a72161fae8b776d8cbe8b68a",
+    "captures/007_B3_single_overall_parity/probes.ltx": "5f0ad2e7485de89875c7cceafd600e6643bc04fee17b935d958dc3663a7cd72b",
+    "captures/007_B3_single_overall_parity/samples_decimal.csv": "89cf1a683e25c2f3f5f41b88af8a4760beb68c892d79eae91668f075c8dd77b3",
+    "captures/007_B3_single_overall_parity/waveform.csv": "d5e3b4d89fe1f1273a479ecd75e3b5676424eec41d3347a39c160a77a1c23351",
+    "captures/007_B3_single_overall_parity/waveform.vcd": "3a66a734f3bd23cd8049443c274de105087ddffa305960339d2c1f3454dae8f0",
+    "mismatches.csv": "f97f7dab573e235b6fe14f99bf862e6ad48c1571da6370579f08198c58fbe5f6",
+    "reports/runme.log": "ac9e46193a3f4d3e81ebd4273afee01b38fddd215e35a88fb2833ef410135217",
+    "reports/zedboard_secded_top_bus_skew_postroute_physopted.rpt": "cb7404d7abda19a515b4bcf3f139576e9d52b7b0d5691f570bb8ce3534b6fa5f",
+    "reports/zedboard_secded_top_bus_skew_routed.rpt": "87b6b8695b2681874120a8523a9fade95851827cb86149a668584a17e562f03e",
+    "reports/zedboard_secded_top_clock_utilization_routed.rpt": "a72c665d689e130d58d34c42c0429948892fcfb910c88a574d3c9f60bda00e99",
+    "reports/zedboard_secded_top_control_sets_placed.rpt": "3c1335f99f92e667760564015ab69b7249db08a5a3d3f2551db52ed064c80de6",
+    "reports/zedboard_secded_top_drc_opted.rpt": "3374be2f61cf83bb1dcdb9f16d53027b6d3f8e706f0f9f78d906fa057bc3c992",
+    "reports/zedboard_secded_top_drc_routed.rpt": "91a442774eb9e0e2b4c41022be8a0e52922d4d313650364df8ee74febceb3956",
+    "reports/zedboard_secded_top_io_placed.rpt": "1ddea8e9cb1f66e0f886837fb0fc41f49c211bacc78c065618d8686e09080982",
+    "reports/zedboard_secded_top_methodology_drc_routed.rpt": "d0afc459876071ca605da309b6abc2e3de38d0d2635aebd52788b9aec4481364",
+    "reports/zedboard_secded_top_power_routed.rpt": "fa1be4a4e8ae0c9dd7a25a6a604f5de354eb3c45ddc43b3f29703da66cb0a04f",
+    "reports/zedboard_secded_top_route_status.rpt": "5d9d10a55ab19c9dccfd29fa84fbd86023c95f149d70ecbfc3e0d8c9675da270",
+    "reports/zedboard_secded_top_timing_summary_postroute_physopted.rpt": "555d809ae18b5250a629e7f960f7c8db00819d31408ff184ce25340b6312c83f",
+    "reports/zedboard_secded_top_timing_summary_routed.rpt": "5f227ec70761df5a7b20933699df5014adf0dbaf4201bc9b658d725cff0da318",
+    "reports/zedboard_secded_top_utilization_placed.rpt": "83af8ac1bfa171274fde99a9643895304bba8d30a34681210c58c67e8312235a",
+    "source_changes.patch": "adf467153c9b7a6be1e72368160bf46dbf7ba85c867582dcd27641d558e17083",
+    "sources/core/.gitignore": "1089e8291cab3da034d4b84f972b369016fdd032edc3eb3c8b4ab7ccc385fbaa",
+    "sources/core/Makefile": "3d5b2aa72f42aaf9db5586c772ec1422157b0c69a6684b5bbe6966d1bb2d919d",
+    "sources/core/README.md": "4923bb4a86fd251e2ae1af2c52e159e66d144fe52986bd83fc2cd7a8f969d956",
+    "sources/core/fpga/zedboard/zedboard_100mhz.xdc": "8dd63b2084029ed527be52d69d66565e16fa89f49c249b78a064d5336c3036fd",
+    "sources/core/fpga/zedboard/zedboard_secded_top.sv": "2177c13f069041294892ef40d96df06caa256cbb4229e57008aa118e3118a4c1",
+    "sources/core/model/__init__.py": "93af91a746a591a741364ef136ba8ecfde5a4afbd3dae23be2c2679a03053d3e",
+    "sources/core/model/mac.py": "2d1e4a3c5d41906c936adbb56b203778e75c761ed0da79c7b7f450f82ee0d1f8",
+    "sources/core/model/mac_secded.py": "e707ff0a85de9125dd922e51fb0498d3aa0d93888c9f5bb91b0e79daf0eea27d",
+    "sources/core/model/secded.py": "7ab3a5dc786a52d3b286fca86d84553e8787138b2690bde695bc0a95b4233d88",
+    "sources/core/research/baseline_validation.md": "d6d5c6ec7ed4c100373d720933b41e655811535ce5d61ff4e276a8d05945244c",
+    "sources/core/research/decision_log.md": "970f07ef2e5353b4207ac08369834ab912cb2b8ebce27b8f6348cf895c5be15d",
+    "sources/core/research/secded_model_validation.md": "36a23b87765653340a6b13c64f88125a9e6fd0d4df6d8f6104fe79f92c7e1693",
+    "sources/core/research/secded_rtl_validation.md": "1e88b6ada85e3a5cb92e96d610f91ada7b27a4f14a231f5acd36983c75f53df9",
+    "sources/core/rtl/mac_secded.sv": "8c05e272760322446dffacd340a87ad22a469975205b351f06cfad5174c6b4e3",
+    "sources/core/rtl/mac_secded_datapath.vh": "37dd8f73a9456f9b3ccb6eb34cee4bddc1912bc2c56a8a4b727628eacdc5f697",
+    "sources/core/rtl/mac_secded_injectable.sv": "f45a0cc1624fcabfb58e1b6c93ee6ab09dc24785d6203567e084e2625969fbbf",
+    "sources/core/rtl/mac_unprotected.sv": "830cc7238e954ff309e5fc752717dcb855ccce096ef30726360ce62c98129180",
+    "sources/core/rtl/secded_decoder.sv": "64d590d33b6a27c5b3f389877ca3cda7fba781f8b54c6b7a9d73d5773a26f63e",
+    "sources/core/rtl/secded_encoder.sv": "4d14b3965504131ecfea1d854c5daea787d0dcb07de250c159408f7d3df88227",
+    "sources/core/rtl/secded_functions.vh": "d3b8987bd5178992eb0dd24a3824058a19ecd5ac4c08b6c7bb143aec2def4508",
+    "sources/core/scripts/archive_fpga_run.py": "a6a3c6b57abeffa13bdc801b2e3af7686f1876015c7802e1141ca4f36005d09c",
+    "sources/core/scripts/check_secded_harness.py": "94d34b1b53c324b52f24666d157a4fdb9693a02b4ffe0f52b2d6d73ca7261971",
+    "sources/core/scripts/compact_fpga_results.py": "b0636a91ecaa303fe7ae06c00af6c2ec1362296a249ed93b0292c6b041cce794",
+    "sources/core/scripts/export_ila_capture.tcl": "611674b45787a99e571f6e2555a000087b7ae9deebc64aac54757af01f80c33b",
+    "sources/core/scripts/generate_secded_vectors.py": "f9cc4127677e1e79b85a6bea98a454d3286625dcee138fdf1b97e98f2875c0a4",
+    "sources/core/scripts/generate_vectors.py": "712e975d847ced7893960c557f517bfabe47b26288b18fc7da416158f3ee702c",
+    "sources/core/scripts/provenance.py": "2ec82edfb306f7a52db5d018e0b9d3973497d123623a71bc1ea57154a3d29701",
+    "sources/core/scripts/secded_capture.py": "9eb9d9acb982e8b68b48a2d3de6105b593ebdea90f04b0d8a60e1aefbc682724",
+    "sources/core/scripts/setup_vivado_sim.tcl": "fe0bf26b5f607492cbf67259470d9ccd768380dbc113149840f3d4087825c407",
+    "sources/core/spec/mac_interface_and_fault_model.md": "fa83a39bb91195b8f24ff84cc6cd745f43e738a0faa4a1f4051d0a781f99be3d",
+    "sources/core/spec/secded_accumulator.md": "b2e3f510975dfdad1f4c4da0fcba722b46aac5e78e8ec2ce289cc19c3bb30383",
+    "sources/core/spec/secded_fpga_setup.md": "4a4d4dde7dfe7f22fc502312d996d8e84764f55d9d0a006ffd70e3e8513b42a4",
+    "sources/core/tests/mac_tb.cpp": "1bdf7b8776460712ae3d8a2965a767dd6480beb2d2ff1626eb62674a3d72ec03",
+    "sources/core/tests/mac_tb.sv": "e3aa28e3552cf106452608ea467e9b59440f9d1ca98bc955cc86356e6a7f4d93",
+    "sources/core/tests/secded_tb.cpp": "0e5e7ff2788bfb740ed83d5034587e377f39ae34264b1a5ec423bce91c0e7531",
+    "sources/core/tests/secded_verify_top.sv": "6719dd68983c08ca4d953a861e2541895db71cdfdf49aa88dcfe007f519b02d6",
+    "sources/core/tests/test_compact_results.py": "2613eecc1f2fd28d565e089fb79cc35b0da02932629713b9d0a3e6d6ab9bd0aa",
+    "sources/core/tests/test_fpga_archive.py": "9293d9cbc4838e416d64ec8206aae89fef1abf7fd89b13ad1b294567428bed4c",
+    "sources/core/tests/test_mac_secded.py": "d361050069e77a5362aab5ed4a87abb6983f8d29786c3f39beaf546aef27b17c",
+    "sources/core/tests/test_model.py": "3ce3ffa5f3c1fbf1343db8422b9c0d3aa425dd34ce1b65f115b249ebe1a3b670",
+    "sources/core/tests/test_secded.py": "a2f153ca3dced35b2087137bf24780a35c5e12853111ceb610642416103162e2",
+    "sources/core/tests/test_secded_capture.py": "67c202cb00df1065876537c96fe17ea0d46128fb5d556e7ac17b995d98383eb1",
+    "sources/core/tests/zedboard_debug_models.sv": "3acfd0c817de5a0c05dc39395de4ebd9d79d21423db4b3c7a8d6096a8437d2f0",
+    "sources/core/tests/zedboard_secded_tb.sv": "d6fab3d3aab99fc738e5870de87a5384072a9569461570e3b426a760f69f6f4d",
+    "sources/fpga/mac_sentry_secded_fpga.srcs/sources_1/ip/ila_secded/ila_secded.xci": "066d9f46d2240a708dfb6852976f0b5e41f1c477d59641b2a54221b4d4b9068b",
+    "sources/fpga/mac_sentry_secded_fpga.srcs/sources_1/ip/vio_secded/vio_secded.xci": "21c7339caf12b4599bd90da022077c562b6f8d59ac907786b6b305238eee1e05",
+    "sources/fpga/mac_sentry_secded_fpga.xpr": "ed6a66442363b3984ba3f634823268e9aa54126010dcd1ecbb098f00a74951a7",
+    "sources/references/000_mac_secded.sv": "8c05e272760322446dffacd340a87ad22a469975205b351f06cfad5174c6b4e3",
+    "sources/references/001_mac_secded_datapath.vh": "37dd8f73a9456f9b3ccb6eb34cee4bddc1912bc2c56a8a4b727628eacdc5f697",
+    "sources/references/002_secded_functions.vh": "d3b8987bd5178992eb0dd24a3824058a19ecd5ac4c08b6c7bb143aec2def4508",
+    "sources/references/003_mac_secded_injectable.sv": "f45a0cc1624fcabfb58e1b6c93ee6ab09dc24785d6203567e084e2625969fbbf",
+    "sources/references/004_secded_decoder.sv": "64d590d33b6a27c5b3f389877ca3cda7fba781f8b54c6b7a9d73d5773a26f63e",
+    "sources/references/005_secded_encoder.sv": "4d14b3965504131ecfea1d854c5daea787d0dcb07de250c159408f7d3df88227",
+    "sources/references/006_zedboard_secded_top.sv": "2177c13f069041294892ef40d96df06caa256cbb4229e57008aa118e3118a4c1",
+    "sources/references/007_zedboard_100mhz.xdc": "8dd63b2084029ed527be52d69d66565e16fa89f49c249b78a064d5336c3036fd",
+    "sources/references/008_vio_secded.xci": "21c7339caf12b4599bd90da022077c562b6f8d59ac907786b6b305238eee1e05",
+    "sources/references/009_ila_secded.xci": "066d9f46d2240a708dfb6852976f0b5e41f1c477d59641b2a54221b4d4b9068b",
+    "test_plan.csv": "86aa0625e4da07959b6d8eabe9720079bd230966402c6b4bb11951bf18ac1fb1",
+    "tests.csv": "93ab4ebc2f70d68c54caeb04c71d72dc6aaf127590dae32615fd918013beb4b0"
+  }
+}

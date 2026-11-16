@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "root_files": [
+    ".gitignore",
+    "Makefile",
+    "README.md",
+    "requirements.txt",
+    "project_manifest.json",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "directories": [
+    "rtl",
+    "model",
+    "tests",
+    "fpga",
+    "asic",
+    "scripts",
+    "spec",
+    "research",
+    "docs",
+    "tools",
+    "requirements",
+    "licenses"
+  ],
+  "additional_paths": [
+    "results/README.md",
+    "results/published"
+  ],
+  "exclude": [
+    "__pycache__",
+    "*.pyc",
+    "docs/overnight_*",
+    "docs/setup_gl_smoke.md",
+    "docs/project_status_handoff.md",
+    "docs/storage_and_retention.md",
+    "docs/team_explainer.md",
+    "docs/work_split*",
+    "docs/local_history/*",
+    "scripts/check_overnight_handoff.py",
+    "tests/test_overnight_handoff.py",
+    ".env*",
+    ".venv",
+    "AGENTS.md",
+    ".aws",
+    ".agents",
+    ".codex",
+    ".context"
+  ],
+  "description": "Public source package; agent automation and local raw build/cache trees are retained locally but not distributed."
+}

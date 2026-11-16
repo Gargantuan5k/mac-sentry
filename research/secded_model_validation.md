@@ -1,3 +1,5 @@
+> Historical research record. Stage names and local `build/` paths below identify the original experiments; they are not clone prerequisites. Start with the [current project overview](../docs/project_overview.md) and [portable results](../docs/results.md).
+
 # Initial SECDED Python validation — 2026-10-14
 
 `make test-model` passed all 29 tests (14 new SECDED tests and 15 existing tests).

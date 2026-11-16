@@ -1,0 +1,327 @@
+# FPGA simulation, board testing and archival
+
+Run all shell commands from the repository root. Vivado Tcl commands run in its
+Tcl Console. Put your installed `vivado` executable on PATH first; Vivado and the
+ZedBoard are external dependencies. No existing sibling project is required for
+RTL simulation. For hardware, create your own project using the sources and IP
+map in the [SECDED setup](../spec/secded_fpga_setup.md) or
+[hybrid setup](../spec/hybrid_fpga_setup.md). The detailed baseline walkthrough
+below describes a user-created sibling project, not a distributed binary project.
+
+For its Tcl examples, set the repository path relative to your open project:
+
+```tcl
+set mac_repo [file normalize [file join [get_property DIRECTORY [current_project]] .. mac_sentry]]
+```
+
+Adjust that relative location if your project layout differs. Always use matching
+BIT/LTX files and review routed timing before hardware use. Existing observations
+and unperformed cases are distinguished in the
+[board backlog](../spec/board_validation_backlog.md). Compact historical summaries
+are distributed in [published results](results.md); raw captures and bitstreams
+are separately archived and are not prerequisites for running new experiments.
+
+## Vivado behavioral simulation
+
+The Vivado walkthrough below targets `mac_unprotected`. The protected simulation
+currently uses Verilator through `make test-secded-rtl`. Its vectors, reports,
+and provenance are stored under `build/secded_w8_a24/` and `build/secded_w4_a8/`.
+For the separate protected project, follow [SECDED FPGA setup](../spec/secded_fpga_setup.md).
+These build outputs are disposable and overwritten on reruns. The protected core
+adds `corrected`; its HDL dependencies and include path are listed in the
+[SECDED contract](../spec/secded_accumulator.md#rtl-integration). A protected board
+wrapper is available in `fpga/zedboard/`. The archive checker supports both the
+baseline and SECDED board captures (`--variant secded`). The accepted R4 repair
+adds `--variant hybrid` for the separate [M3 wrapper](../spec/hybrid_fpga_setup.md),
+including variable latency, unusable-source valid results, rejected scrub
+corruption and tainted continuations. Only observed reset/idle clear restores
+trust after captured corruption.
+Use `--evidence-kind synthetic` for simulations; hardware evidence remains NOT RUN.
+
+[`tests/mac_tb.sv`](../tests/mac_tb.sv) replays the Python vectors and checks arithmetic
+and protocol signals each cycle. A mismatch stops simulation with diagnostics.
+
+1. Run `make vectors` in this repository (only Python and Make are needed).
+2. Open your `mac_sentry_fpga` Vivado project. For the ZedBoard, select part
+   `xc7z020clg484-1`.
+3. In the Vivado Tcl Console, set `mac_repo` as above, then source the setup script:
+
+   ```tcl
+   source [file join $mac_repo scripts setup_vivado_sim.tcl]
+   ```
+
+4. Select **Run Simulation > Run Behavioral Simulation**. The script configures
+   **Run All**; if a simulation was already open, close it and relaunch.
+
+The script sets simulation top to `mac_tb`, references the original sources, and
+replaces simulation generics/XSim options with the 8/24 baseline configuration.
+No connected board or pin constraints are needed for this simulation.
+
+Expected default result:
+
+```text
+PASS: 155320 cycles matched the Python reference (SystemVerilog testbench)
+```
+
+Run the full 1.5532 ms of simulated time, not just an initial 1000 ns. Use signed
+decimal radix for operands and accumulator. Keep `mac_tb.sv` in **Simulation
+Sources**. For 4/8, change both generics and vector path/count to match generated
+vectors. Local outputs under `build/w8_a24/` and `build/w4_a8/` are overwritten on
+reruns; FPGA run archives below are preserved separately.
+
+## How to test on FPGA
+
+The walkthrough below is for the **unprotected** `../mac_sentry_fpga` project.
+For the existing protected project, use [SECDED setup](../spec/secded_fpga_setup.md)
+and the [board test checklist](../spec/board_validation_backlog.md), including
+exact A/B/C/D tests, missing evidence and future hybrid tests.
+Use VIO for manual inputs and ILA for cycle-by-cycle observation.
+
+### 1. Confirm the hardware build
+
+The design top is `zedboard_mac_top`; `mac_tb` remains the simulation top.
+The wrapper connects the portable MAC, `vio_mac`, and `ila_mac` to the same
+100 MHz clock, and converts a VIO `start_request` rising transition into one
+`start_pulse`. Holding the request high must not repeatedly launch operations.
+There is no request queue: issue requests only while `ready=1`.
+
+The board XDC must include all three constraints:
+
+```tcl
+set_property PACKAGE_PIN Y9 [get_ports clk_100mhz]
+set_property IOSTANDARD LVCMOS33 [get_ports clk_100mhz]
+create_clock -name sys_clk -period 10.000 [get_ports clk_100mhz]
+```
+
+The pin and I/O standard follow the
+[ZedBoard master constraints](https://github.com/Digilent/digilent-xdc/blob/master/Zedboard-Master.xdc).
+`create_clock` describes the oscillator to timing analysis; it does not generate
+a clock. Pin assignment alone does not constrain timing. After changing the XDC,
+rerun synthesis and implementation, review post-route setup/hold timing,
+unconstrained paths and DRC, then regenerate the bitstream. A successful manual
+test or bitstream generation alone does not establish timing closure.
+
+In Hardware Manager, open the target and program the device with the `.bit` and
+matching `.ltx` from the same build. Open the VIO and ILA dashboards.
+
+### 2. Set VIO inputs and reset
+
+The wrapper uses these VIO probe mappings (directions are relative to VIO):
+
+| Probe | Width | Signal | Initial IP output value |
+| --- | ---: | --- | ---: |
+| `probe_out0` | 1 | `rst` | 1 |
+| `probe_out1` | 1 | `clear` | 0 |
+| `probe_out2` | 1 | `start_request` | 0 |
+| `probe_out3` | 8 | `operand_a` | 0 |
+| `probe_out4` | 8 | `operand_b` | 0 |
+| `probe_in0` | 1 | `ready` | — |
+| `probe_in1` | 1 | `busy` | — |
+| `probe_in2` | 24 | `accumulator` | — |
+| `probe_in3` | 2 | `error` | — |
+
+Set and apply `rst=1`, `clear=0`, and `start_request=0`. Set operand radix to
+hexadecimal and apply `operand_a=03`, `operand_b=FC` (signed 3 and -4).
+Then apply `rst=0`. Confirm `ready=1`, `busy=0`, `accumulator=0`, and `error=0`.
+Keep `start_request=0` until the ILA is waiting for its trigger. Keep operands
+stable before launching; apply operand changes separately from the start request.
+
+### 3. Configure and arm the ILA
+
+The Native ILA is built with 1024 samples and zero input pipeline stages. Its
+probes must have these names/connections so the archive analyzer can identify them:
+
+| Probe | Signal | Width |
+| --- | --- | ---: |
+| `probe0` | `rst` | 1 |
+| `probe1` | `clear` | 1 |
+| `probe2` | `start_pulse` | 1 |
+| `probe3` | `operand_a` | 8 |
+| `probe4` | `operand_b` | 8 |
+| `probe5` | `ready` | 1 |
+| `probe6` | `busy` | 1 |
+| `probe7` | `done` | 1 |
+| `probe8` | `result_valid` | 1 |
+| `probe9` | `error` | 2 |
+| `probe10` | `accumulator` | 24 |
+
+With the ILA stopped, use **ILA Core Properties / Capture Mode Settings** to set
+one capture window, data depth 1024, and trigger position 512. Alternatively,
+for this single-ILA design, run in Vivado's Tcl Console:
+
+```tcl
+set mac_ila [get_hw_ilas]
+if {[llength $mac_ila] != 1} {error "Select the intended ILA explicitly; expected one core"}
+set_property CONTROL.WINDOW_COUNT 1 $mac_ila
+set_property CONTROL.DATA_DEPTH 1024 $mac_ila
+set_property CONTROL.TRIGGER_POSITION 512 $mac_ila
+```
+
+In **Trigger Setup**, use just `start_pulse == 1`. Use unconditional capture
+(every clock), not conditional storage or multiple windows. The analyzer requires
+consecutive samples. Position 512 preserves 512 samples before the trigger,
+the trigger sample, and 511 samples after it. At 100 MHz the full window is
+10.24 microseconds. See
+[AMD ILA control properties](https://docs.amd.com/r/en-US/ug835-vivado-tcl-commands/run_hw_ila).
+
+Click **Run Trigger**, not **Run Trigger Immediate**. Wait for **Waiting for
+Trigger** before changing the VIO start request. The ILA cannot recover events
+that happened before it was armed.
+
+### 4. Launch and inspect the operation
+
+In VIO, change `start_request` from 0 to 1 and apply it. Wait for the ILA capture
+to complete and its waveform to display. Zoom around the trigger marker; set
+operands and accumulator to signed decimal radix.
+
+For the first test, expect:
+
+| Sample | `start_pulse` | `busy` | `done` | `result_valid` | Accumulator |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Trigger | 1 | 0 | 0 | 0 | 0 |
+| Next | 0 | 1 | 0 | 0 | 0 |
+| Following | 0 | 0 | 1 | 1 | -12 |
+
+The ILA samples before register updates caused by that same edge become visible.
+This accounts for the ordering above. The 24-bit hexadecimal result is `FFFFF4`.
+`done` and `result_valid` last one clock, so inspect them in ILA rather than
+expecting to see their pulses on VIO's interactive display.
+
+### 5. Save, analyze, and archive the capture
+
+Select the completed capture. In the **Vivado Tcl Console**, run:
+
+```tcl
+source [file join $mac_repo scripts export_ila_capture.tcl]
+mac_save_ila [file join $mac_repo results captures signed_mac_001]
+```
+
+This saves `.ila` and `.csv`. Use a new base name if either already exists.
+Save before taking another capture; automatic backup may retain only the latest.
+
+Then, in a **terminal at the repository root**, run:
+
+```sh
+python3 scripts/archive_fpga_run.py \
+  --project ../mac_sentry_fpga \
+  --capture results/captures/signed_mac_001.ila \
+  --output results/runs/zedboard_baseline_001
+```
+
+Use the same capture name in both commands. Choose a new capture/run suffix if
+either name already exists; dates in run IDs are optional. For this
+test, `tests.csv` should contain a `mac` row with initial accumulator 0, operands
+3 and -4, expected and observed accumulator -12, and status PASS.
+`capture_summary.csv` should show one complete MAC transaction; `mismatches.csv`
+should have only its header. Inspect manifest warnings as well: a captured MAC
+PASS does not imply the timing report passed or establish earlier state history.
+
+### 6. Repeat and troubleshoot
+
+- For another operation, apply `start_request=0`, change/apply operands, re-arm
+  the ILA, wait for the trigger, then apply `start_request=1`.
+- To test accumulation, continue from -12 with operands `02` and `05`; expect
+  -2 (`FFFFFE`). Save with a new capture name.
+- To test idle clear, keep the request low and trigger on `clear == 1` instead.
+  Arm before asserting clear, capture the accumulator becoming zero, then return
+  clear to zero. Restore the start trigger for later MAC tests.
+- A waveform with no request/completion and zero complete MAC transactions is
+  idle evidence only. Re-arm before raising the request; avoid Immediate Trigger.
+- If stuck waiting, confirm `rst=0`, `clear=0`, and that the request was actually
+  applied low before raising it. Confirm the trigger is on `start_pulse`.
+- INCOMPLETE means the capture lacks consecutive samples through the event's end;
+  check trigger position and unconditional storage. FAIL requires inspecting
+  `mismatches.csv` and the corresponding waveform, not relabeling the result.
+
+## Results structure and lifecycle
+
+Every future archive should use `--output results/runs/<new-run-id>`, as in the
+capture command above. The script compacts the archive automatically:
+
+```text
+results/
+├── README.md                       # Index refreshed by the compaction utility
+├── builds/
+│   └── <content-hash>.zip           # Shared bitstream, probes, checkpoint, reports
+├── runs/
+│   └── <date>_<variant>_<board>_<sequence>/
+│       ├── README.md               # Findings and evidence limits
+│       ├── tests.csv               # Observed events: PASS / FAIL / INCOMPLETE
+│       ├── capture_summary.csv     # Sample, transition and transaction counts
+│       ├── mismatches.csv          # Expected versus observed signal values
+│       ├── test_plan.csv           # Suggested tests; not measured results
+│       ├── manifest.json           # Original file hashes, provenance, warnings
+│       ├── storage.json            # ZIP locations, member paths and ZIP hashes
+│       ├── sources.zip             # This run's source/IP/XDC/project snapshot
+│       ├── source_changes.patch    # Tracked changes at archive time
+│       └── captures/               # Original ILA/CSV and decoded sample data
+└── captures/                       # Incoming exports awaiting archival; optional
+```
+
+### Run lifecycle
+
+Follow FPGA steps 3–5: **arm → operate → export → archive → inspect CSVs**.
+Keep each completed run unchanged; a new capture or build gets a new run ID.
+Repeat `--capture` to include several recordings in one run. `test_plan.csv`
+contains suggested tests, never measured results.
+
+For SECDED use `--variant secded --project ../mac_sentry_secded_fpga
+--impl-run impl_secded_perf` with the 16 named probes in the setup guide.
+Use the actual implementation run name if it differs. The analyzer checks raw
+storage, injection acknowledgement, correction, failed MACs and recovery.
+BLOCKED means an observed start was not accepted (for example, clear was high);
+a failure completion with valid=0/error=1 can correctly PASS a double-error test.
+
+The script reads the existing Vivado project and artifacts; it does not program
+or drive the board. It archives `impl_1` by default (`--impl-run` selects another).
+If `--capture` is omitted, it reads saved `.ila` files in the project's
+`.hw/backup/`, which may contain only the latest recording. Explicit capture
+selection is preferable for a named experiment.
+
+Build ZIPs are shared only when all included artifact/report paths and hashes
+match. Each run retains its own source snapshot. `storage.json` maps original
+paths such as `build/…` and `sources/…` to their ZIPs; open those ZIPs to inspect
+or extract individual files. Original manifests and measurements remain intact.
+The archived XPR retains original paths; consult `project_references` in the
+manifest when relocating it.
+
+### Integrity, cleanup and backup
+
+Verify all runs without changing them:
+
+```sh
+python3 scripts/compact_fpga_results.py --verify-only
+```
+
+Optionally remove incoming exports already preserved byte-for-byte in a run and
+refresh the run index:
+
+```sh
+python3 scripts/compact_fpga_results.py
+```
+
+The compactor verifies original file hashes and ZIP contents before removing
+redundant originals. New archives are already compressed; this command is not
+required after every run.
+
+**Back up the entire `results/` directory, including `builds/`.** A run directory
+alone references shared build ZIPs. Run archives, build ZIPs, and incoming captures
+are Git-ignored; a repository commit does not back them up.
+
+### What the evidence establishes
+
+The analyzer assumes named probes, 8/24 arithmetic, zero ILA input pipeline
+stages, and consecutive samples. It checks captured transitions against Python;
+it uses observed initial accumulator/storage without proving earlier history.
+The SECDED checker waits for known idle/reset state when a capture begins busy,
+and reports transitions lacking captured operand history. It does not infer a
+missing accepted request from a completion alone.
+Source snapshots identify files at archive time, not necessarily the files used
+to produce the programmed bitstream. Collecting build files with a capture does
+not independently establish their association.
+
+Timing warnings, including nonzero `no_clock` or unconstrained-endpoint counts,
+remain in the manifest. A functional PASS does not imply timing closure, and
+absence of these particular warnings is not full sign-off. Resource reports
+include VIO, ILA, debug hub and wrapper; they describe the instrumented design.
+

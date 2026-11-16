@@ -1,0 +1,416 @@
+{
+  "failures": [],
+  "groups": {
+    "calibration/hybrid/accumulator_data": {
+      "acknowledged": 1,
+      "outcomes": {
+        "recovery": 1
+      },
+      "planned": 1,
+      "requested": 1
+    },
+    "calibration/hybrid/busy_control": {
+      "acknowledged": 1,
+      "outcomes": {
+        "timeout": 1
+      },
+      "planned": 1,
+      "requested": 1
+    },
+    "calibration/hybrid/candidate": {
+      "acknowledged": 3,
+      "outcomes": {
+        "detected_failure": 1,
+        "recovery": 1,
+        "silent_escape": 1
+      },
+      "planned": 3,
+      "requested": 3
+    },
+    "calibration/hybrid/ecc_check_or_multibit": {
+      "acknowledged": 2,
+      "outcomes": {
+        "detected_failure": 1,
+        "silent_escape": 1
+      },
+      "planned": 2,
+      "requested": 2
+    },
+    "calibration/hybrid/none": {
+      "acknowledged": 0,
+      "outcomes": {
+        "clean": 1
+      },
+      "planned": 1,
+      "requested": 0
+    },
+    "calibration/hybrid/postcheck_commit": {
+      "acknowledged": 1,
+      "outcomes": {
+        "silent_escape": 1
+      },
+      "planned": 1,
+      "requested": 1
+    },
+    "calibration/hybrid/predicted_residue": {
+      "acknowledged": 1,
+      "outcomes": {
+        "detected_failure": 1
+      },
+      "planned": 1,
+      "requested": 1
+    },
+    "calibration/hybrid/saved_a": {
+      "acknowledged": 1,
+      "outcomes": {
+        "silent_escape": 1
+      },
+      "planned": 1,
+      "requested": 1
+    },
+    "calibration/secded/accumulator_data": {
+      "acknowledged": 1,
+      "outcomes": {
+        "recovery": 1
+      },
+      "planned": 1,
+      "requested": 1
+    },
+    "calibration/secded/busy_control": {
+      "acknowledged": 1,
+      "outcomes": {
+        "timeout": 1
+      },
+      "planned": 1,
+      "requested": 1
+    },
+    "calibration/secded/candidate": {
+      "acknowledged": 1,
+      "outcomes": {
+        "silent_escape": 1
+      },
+      "planned": 1,
+      "requested": 1
+    },
+    "calibration/secded/ecc_check_or_multibit": {
+      "acknowledged": 2,
+      "outcomes": {
+        "detected_failure": 1,
+        "silent_escape": 1
+      },
+      "planned": 2,
+      "requested": 2
+    },
+    "calibration/secded/none": {
+      "acknowledged": 0,
+      "outcomes": {
+        "clean": 1
+      },
+      "planned": 1,
+      "requested": 0
+    },
+    "calibration/secded/saved_a": {
+      "acknowledged": 1,
+      "outcomes": {
+        "silent_escape": 1
+      },
+      "planned": 1,
+      "requested": 1
+    },
+    "calibration/tmr/accumulator_data": {
+      "acknowledged": 1,
+      "outcomes": {
+        "recovery": 1
+      },
+      "planned": 1,
+      "requested": 1
+    },
+    "calibration/tmr/busy_control": {
+      "acknowledged": 1,
+      "outcomes": {
+        "timeout": 1
+      },
+      "planned": 1,
+      "requested": 1
+    },
+    "calibration/tmr/candidate": {
+      "acknowledged": 1,
+      "outcomes": {
+        "recovery": 1
+      },
+      "planned": 1,
+      "requested": 1
+    },
+    "calibration/tmr/candidate_voter": {
+      "acknowledged": 1,
+      "outcomes": {
+        "silent_escape": 1
+      },
+      "planned": 1,
+      "requested": 1
+    },
+    "calibration/tmr/none": {
+      "acknowledged": 0,
+      "outcomes": {
+        "clean": 1
+      },
+      "planned": 1,
+      "requested": 0
+    },
+    "calibration/tmr/saved_a": {
+      "acknowledged": 1,
+      "outcomes": {
+        "recovery": 1
+      },
+      "planned": 1,
+      "requested": 1
+    },
+    "calibration/unprotected/accumulator_data": {
+      "acknowledged": 1,
+      "outcomes": {
+        "silent_escape": 1
+      },
+      "planned": 1,
+      "requested": 1
+    },
+    "calibration/unprotected/busy_control": {
+      "acknowledged": 1,
+      "outcomes": {
+        "timeout": 1
+      },
+      "planned": 1,
+      "requested": 1
+    },
+    "calibration/unprotected/candidate": {
+      "acknowledged": 1,
+      "outcomes": {
+        "silent_escape": 1
+      },
+      "planned": 1,
+      "requested": 1
+    },
+    "calibration/unprotected/none": {
+      "acknowledged": 0,
+      "outcomes": {
+        "clean": 1
+      },
+      "planned": 1,
+      "requested": 0
+    },
+    "calibration/unprotected/saved_a": {
+      "acknowledged": 1,
+      "outcomes": {
+        "silent_escape": 1
+      },
+      "planned": 1,
+      "requested": 1
+    },
+    "clean_sample/hybrid/none": {
+      "acknowledged": 0,
+      "outcomes": {
+        "clean": 16
+      },
+      "planned": 16,
+      "requested": 0
+    },
+    "clean_sample/secded/none": {
+      "acknowledged": 0,
+      "outcomes": {
+        "clean": 16
+      },
+      "planned": 16,
+      "requested": 0
+    },
+    "clean_sample/tmr/none": {
+      "acknowledged": 0,
+      "outcomes": {
+        "clean": 16
+      },
+      "planned": 16,
+      "requested": 0
+    },
+    "clean_sample/unprotected/none": {
+      "acknowledged": 0,
+      "outcomes": {
+        "clean": 16
+      },
+      "planned": 16,
+      "requested": 0
+    },
+    "matched_functional/hybrid/accumulator_data": {
+      "acknowledged": 16,
+      "outcomes": {
+        "recovery": 16
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "matched_functional/hybrid/candidate": {
+      "acknowledged": 16,
+      "outcomes": {
+        "detected_failure": 7,
+        "recovery": 9
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "matched_functional/hybrid/saved_a": {
+      "acknowledged": 16,
+      "outcomes": {
+        "recovery": 1,
+        "silent_escape": 15
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "matched_functional/hybrid/saved_b": {
+      "acknowledged": 16,
+      "outcomes": {
+        "silent_escape": 16
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "matched_functional/secded/accumulator_data": {
+      "acknowledged": 16,
+      "outcomes": {
+        "recovery": 16
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "matched_functional/secded/candidate": {
+      "acknowledged": 16,
+      "outcomes": {
+        "silent_escape": 16
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "matched_functional/secded/saved_a": {
+      "acknowledged": 16,
+      "outcomes": {
+        "recovery": 1,
+        "silent_escape": 15
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "matched_functional/secded/saved_b": {
+      "acknowledged": 16,
+      "outcomes": {
+        "silent_escape": 16
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "matched_functional/tmr/accumulator_data": {
+      "acknowledged": 16,
+      "outcomes": {
+        "recovery": 16
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "matched_functional/tmr/candidate": {
+      "acknowledged": 16,
+      "outcomes": {
+        "recovery": 16
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "matched_functional/tmr/saved_a": {
+      "acknowledged": 16,
+      "outcomes": {
+        "recovery": 16
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "matched_functional/tmr/saved_b": {
+      "acknowledged": 16,
+      "outcomes": {
+        "recovery": 16
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "matched_functional/unprotected/accumulator_data": {
+      "acknowledged": 16,
+      "outcomes": {
+        "silent_escape": 16
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "matched_functional/unprotected/candidate": {
+      "acknowledged": 16,
+      "outcomes": {
+        "silent_escape": 16
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "matched_functional/unprotected/saved_a": {
+      "acknowledged": 16,
+      "outcomes": {
+        "recovery": 1,
+        "silent_escape": 15
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "matched_functional/unprotected/saved_b": {
+      "acknowledged": 16,
+      "outcomes": {
+        "silent_escape": 16
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "protection/hybrid/ecc_check_or_multibit": {
+      "acknowledged": 16,
+      "outcomes": {
+        "recovery": 16
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "protection/hybrid/postcheck_commit": {
+      "acknowledged": 16,
+      "outcomes": {
+        "silent_escape": 16
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "protection/hybrid/predicted_residue": {
+      "acknowledged": 16,
+      "outcomes": {
+        "detected_failure": 7,
+        "recovery": 9
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "protection/secded/ecc_check_or_multibit": {
+      "acknowledged": 16,
+      "outcomes": {
+        "recovery": 16
+      },
+      "planned": 16,
+      "requested": 16
+    },
+    "protection/tmr/candidate_voter": {
+      "acknowledged": 16,
+      "outcomes": {
+        "silent_escape": 16
+      },
+      "planned": 16,
+      "requested": 16
+    }
+  },
+  "planned": 429,
+  "recorded": 429
+}

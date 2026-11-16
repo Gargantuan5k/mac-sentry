@@ -1,3 +1,5 @@
+> Historical research record. Stage names and local `build/` paths below identify the original experiments; they are not clone prerequisites. Start with the [current project overview](../docs/project_overview.md) and [portable results](../docs/results.md).
+
 # Initial baseline validation — 2026-09-23
 
 Reproduce with `make all` from the repository root. The default seed is 20260923.

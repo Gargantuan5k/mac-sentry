@@ -1,0 +1,19 @@
+{
+  "after": [],
+  "before": [
+    {
+      "pid": 657517,
+      "state": "S"
+    },
+    {
+      "pid": 657518,
+      "state": "S"
+    }
+  ],
+  "pgid": 657517,
+  "quiescent": true,
+  "returncode": 0,
+  "signals": [
+    "SIGTERM"
+  ]
+}

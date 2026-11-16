@@ -1,0 +1,4 @@
+- /home/sid/Development/hardware/mac_sentry/build/overnight/20261107_100934_2_astra/workspace/build/pilot/run_e46nd7_8/sources/tests/pilot_tb.sv:301: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.046 2026-02-28
+- Verilator: $finish at 56ns; walltime 0.001 s; speed 97.759 us/s
+- Verilator: cpu 0.001 s on 1 threads; allocated 6 MB

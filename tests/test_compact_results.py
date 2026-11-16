@@ -38,6 +38,22 @@ class CompactionTests(unittest.TestCase):
                 self.assertEqual(handle.read('sources/core/rtl/core.sv'), b'new RTL snapshot')
             compact_run(first, root / 'builds')  # Safe repeat.
 
+    def test_reproducible_source_epoch_timestamp_preserves_original_bytes(self):
+        import os
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            run = self.make_run(root, 'epoch', source=b'RTL\x00\xff\n')
+            original_manifest = (run / 'manifest.json').read_bytes()
+            for path in run.rglob('*'):
+                if path.is_file(): os.utime(path, (0, 0))
+            compact_run(run, root / 'builds')
+            self.assertEqual(verify_run(run), 4)
+            self.assertEqual((run / 'manifest.json').read_bytes(), original_manifest)
+            with ZipFile(run / 'sources.zip') as handle:
+                entry = handle.getinfo('sources/core/rtl/core.sv')
+                self.assertEqual(entry.date_time[:3], (1980, 1, 1))
+                self.assertEqual(handle.read(entry), b'RTL\x00\xff\n')
+
     def test_corrupt_input_refuses_compaction(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

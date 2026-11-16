@@ -1,0 +1,8 @@
+{
+  "source": "build/r4_handoff/run_hde6o0fz/m7_inputs/scripts/archive_fpga_run.py",
+  "source_sha256": "cef7bc3163f727c79c59216b56f7cccd25b911ae1bf7106d6f21b79136348b11",
+  "fixture_sha256": "b8295ad4a3d7957f4885ffe17e7a6905d6f9bda0e83ff77e1b290c35c879810e",
+  "reference_archive": "build/r4_handoff/run_hde6o0fz/m7_archive_reference",
+  "driver": "build/r4_handoff/run_hde6o0fz/m7_reference_driver.py",
+  "note": "Accepted M7 script generates eight NOT_RECORDED plan rows. Historical SECDED archive predates five plan additions; measured CSV outputs remain byte-identical. Driver changes only root path and read-only Git provenance helper."
+}

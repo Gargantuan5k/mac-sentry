@@ -1,0 +1,2 @@
+FATAL: /home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_/sources/tests/asic_gl_tb.sv:27: M2_GLS_COMPARE sample=100 got=19 ref=18
+       Time: 4975000  Scope: asic_gl_tb.sample

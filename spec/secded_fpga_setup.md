@@ -120,10 +120,13 @@ pre-edge values: a register change caused by one edge appears at the next sample
    Expect done=1, result_valid=0, error=1, with the damaged word preserved.
 5. Clear while idle; verify encoded zero, then run a successful MAC again.
 
-Export both raw `.ila` and `.csv` captures with meaningful names. The existing
-archive analyzer uses the unprotected model and cannot certify these injection
-traces. A protected capture analyzer is still required. Record instrumented
-resource/timing results separately from production-core cost comparisons.
+Export both raw `.ila` and `.csv` captures with meaningful names. Archive using
+`--variant secded`, the protected project, and the actual implementation run
+(previously `impl_secded_perf`). The checker verifies raw storage transitions,
+injection acknowledgement, repair, rejected operations and recovery.
+Follow the [board backlog](board_validation_backlog.md) for exact commands, test
+IDs, missing captures and expected waveforms. Record instrumented resource/timing
+results separately from production-core cost comparisons.
 
 ## Local validation
 

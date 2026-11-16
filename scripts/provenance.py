@@ -13,6 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def command(*args):
     try:
+        if args and args[0] == "git":
+            args = ("git", "--no-optional-locks", "-c", "diff.autoRefreshIndex=false", *args[1:])
         result = subprocess.run(args, cwd=ROOT, capture_output=True, text=True, check=False)
     except FileNotFoundError:
         return None
@@ -24,7 +26,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     files = [ROOT / "Makefile", ROOT / "README.md"]
-    for folder in ("rtl", "model", "tests", "scripts", "spec", "fpga"):
+    for folder in ("rtl", "model", "tests", "scripts", "spec", "fpga", "asic", "tools", "requirements"):
         files.extend(p for p in (ROOT / folder).rglob("*") if p.is_file() and "__pycache__" not in p.parts)
     artifacts = [args.output.parent / name for name in
                  ("vectors.txt", "vectors.json", "simulation.log", "harness_checks.log",

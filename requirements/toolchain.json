@@ -1,0 +1,15 @@
+{
+  "scope": "Recorded working host toolchain; other versions require fresh validation",
+  "core_python_minimum": "3.10",
+  "tested_host": {
+    "python": "3.14.7",
+    "verilator": "5.046",
+    "yosys": "0.58",
+    "iverilog": "12.0",
+    "gcc": "15.3.1",
+    "vivado": "2025.2.1"
+  },
+  "fpga_part": "xc7z020clg484-1",
+  "asic_python": "3.11",
+  "heavy_jobs_default": 2
+}

@@ -1,0 +1,4 @@
+# Core models, vector generation, result checking, capture analysis and packaging
+# use only the Python standard library (Python 3.10+).
+# Install external HDL tools separately; see requirements/README.md.
+# ASIC Python environments are separate; see requirements/asic*.txt and tools/setup_asic.py.

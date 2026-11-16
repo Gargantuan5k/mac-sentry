@@ -1,0 +1,2 @@
+capture,sample,action,initial_acc,a,b,expected_acc,observed_acc,status,notes
+001_signed_mac_001,512,mac,0,3,-4,-12,-12,PASS,Checks captured samples only; prior accumulator history is not established.

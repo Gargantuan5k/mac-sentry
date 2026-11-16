@@ -1,0 +1,17 @@
+{
+  "ttsky-verilog-template": {
+    "requested_ref": "main",
+    "commit": "a42e6662fab316e93b4e26399e21d41664a460b7",
+    "tar_sha256": "e3db0ea39de055f62b8c31e17d46e3f95eca9a6819cba806ef0b7bbd37b086fd"
+  },
+  "tt-support-tools": {
+    "requested_ref": "main",
+    "commit": "9d13ff3e3e6202090740110438c6a10c1d62ca0f",
+    "tar_sha256": "c6712cffa8bdce0cf4092cd503a6c26087e7183e3b4b698e6cb260eec071244b"
+  },
+  "tt-gds-action": {
+    "requested_ref": "ttsky26d",
+    "commit": "395eedb3eeec3c2f4961c3b04ff2cf87f5525636",
+    "tar_sha256": "9d5d896b3d2e56e435a0c1ff05d1190f859337dc8854edf4548ec701a43fdf85"
+  }
+}

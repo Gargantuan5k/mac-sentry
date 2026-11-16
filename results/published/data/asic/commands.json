@@ -1,0 +1,279 @@
+[
+  {
+    "name": "tt_environment",
+    "argv": [
+      "/home/sid/Development/hardware/mac_sentry/build/asic-tools/tt-venv/bin/python",
+      "-B",
+      "-c",
+      "import sys,json,importlib.metadata as m; print(json.dumps({\"python\":sys.version,\"packages\":sorted((d.metadata[\"Name\"],d.version) for d in m.distributions())},indent=2))"
+    ],
+    "started_utc": "2026-11-08T10:14:50.202069+00:00",
+    "returncode": 0,
+    "expected_failure": null
+  },
+  {
+    "name": "tt_metadata",
+    "argv": [
+      "/home/sid/Development/hardware/mac_sentry/build/asic-tools/tt-venv/bin/python",
+      "-B",
+      "-c",
+      "import sys,yaml; from pathlib import Path; p=Path(sys.argv[1]); sys.path.insert(0,str(p/\"tt\")); from project_info import ProjectInfo; i=ProjectInfo(yaml.safe_load((p/\"project/info.yaml\").read_text()), yaml.safe_load((p/\"tt/tech/sky130A/tile_sizes.yaml\").read_text()),require_pinout=True); print(\"TT_METADATA_VALID\",i.top_module,i.tiles)",
+      "/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_"
+    ],
+    "started_utc": "2026-11-08T10:14:50.484079+00:00",
+    "returncode": 0,
+    "expected_failure": null
+  },
+  {
+    "name": "librelane_version",
+    "argv": [
+      "/usr/bin/python3",
+      "/home/sid/Development/hardware/mac_sentry/overnight/container_runtime.py",
+      "run",
+      "--network=none",
+      "--pull=never",
+      "-v",
+      "/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_:/work:rw,Z",
+      "-v",
+      "/home/sid/Development/hardware/mac_sentry/build/asic-tools/pdk/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71:/pdk:ro",
+      "-w",
+      "/work",
+      "-e",
+      "PDK_ROOT=/pdk",
+      "-e",
+      "PDK=sky130A",
+      "-e",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "-e",
+      "OMP_NUM_THREADS=2",
+      "sha256:897f703b9de811e792eb22023fd0986418bbbd9ae5ff511eb74419008eac810f",
+      "python3",
+      "-m",
+      "librelane",
+      "--version"
+    ],
+    "started_utc": "2026-11-08T10:14:50.594355+00:00",
+    "returncode": 0,
+    "expected_failure": null
+  },
+  {
+    "name": "hardening_input_access",
+    "argv": [
+      "/usr/bin/python3",
+      "/home/sid/Development/hardware/mac_sentry/overnight/container_runtime.py",
+      "run",
+      "--network=none",
+      "--pull=never",
+      "-v",
+      "/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_:/work:rw,Z",
+      "-v",
+      "/home/sid/Development/hardware/mac_sentry/build/asic-tools/pdk/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71:/pdk:ro",
+      "-w",
+      "/work",
+      "-e",
+      "PDK_ROOT=/pdk",
+      "-e",
+      "PDK=sky130A",
+      "-e",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "-e",
+      "OMP_NUM_THREADS=2",
+      "sha256:897f703b9de811e792eb22023fd0986418bbbd9ae5ff511eb74419008eac810f",
+      "python3",
+      "-c",
+      "import hashlib, json, os, sys\nfrom pathlib import Path\nprint(json.dumps({\"cwd\": os.getcwd(), \"uid\": os.getuid(), \"gid\": os.getgid()}), flush=True)\nfor filename, expected in zip(sys.argv[2::2], sys.argv[3::2]):\n    print(\"M2_INPUT_OPEN \" + filename, flush=True)\n    actual = hashlib.sha256(Path(filename).read_bytes()).hexdigest()\n    if actual != expected:\n        raise ValueError(\"M2_INPUT_HASH_MISMATCH \" + filename)\n    print(\"M2_INPUT_READ_OK \" + filename + \" \" + actual, flush=True)\nwith Path(sys.argv[1]).open(\"x\") as stream:\n    stream.write(\"Input hashes and new output write verified; not a physical PASS.\\n\")\nprint(\"M2_CONTAINER_ACCESS_OK\", flush=True)\n",
+      "/work/hardening_input_access.txt",
+      "/work/project/src/config.json",
+      "0b60dc243863c25d32a023e3815b78fd7573038c6cf7d660527c34034eb53311",
+      "/pdk/sky130A/SOURCES",
+      "64e6db1b53254d0bf4fc58e8a1cd98efc5bd39a1c3b24a6fd15542275835a45b"
+    ],
+    "started_utc": "2026-11-08T10:14:52.258575+00:00",
+    "returncode": 0,
+    "expected_failure": null
+  },
+  {
+    "name": "harden",
+    "argv": [
+      "/usr/bin/python3",
+      "/home/sid/Development/hardware/mac_sentry/overnight/container_runtime.py",
+      "run",
+      "--network=none",
+      "--pull=never",
+      "-v",
+      "/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_:/work:rw,Z",
+      "-v",
+      "/home/sid/Development/hardware/mac_sentry/build/asic-tools/pdk/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71:/pdk:ro",
+      "-w",
+      "/work/project",
+      "-e",
+      "PDK_ROOT=/pdk",
+      "-e",
+      "PDK=sky130A",
+      "-e",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "-e",
+      "OMP_NUM_THREADS=2",
+      "sha256:897f703b9de811e792eb22023fd0986418bbbd9ae5ff511eb74419008eac810f",
+      "python3",
+      "-m",
+      "librelane",
+      "--pdk-root",
+      "/pdk",
+      "--pdk",
+      "sky130A",
+      "--scl",
+      "sky130_fd_sc_hd",
+      "--manual-pdk",
+      "--flow",
+      "classic",
+      "--jobs",
+      "2",
+      "--run-tag",
+      "R2",
+      "--hide-progress-bar",
+      "/work/project/src/config.json"
+    ],
+    "started_utc": "2026-11-08T10:14:52.728620+00:00",
+    "returncode": 0,
+    "expected_failure": null
+  },
+  {
+    "name": "precheck_input_access",
+    "argv": [
+      "/usr/bin/python3",
+      "/home/sid/Development/hardware/mac_sentry/overnight/container_runtime.py",
+      "run",
+      "--network=none",
+      "--pull=never",
+      "-v",
+      "/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_:/work:rw,Z",
+      "-v",
+      "/home/sid/Development/hardware/mac_sentry/build/asic-tools/pdk/ciel/sky130/versions/0536d02d875c8f67dd7cca3902ac457e62f20005:/pdk:ro",
+      "-w",
+      "/work",
+      "-e",
+      "PDK_ROOT=/pdk",
+      "-e",
+      "PDK=sky130A",
+      "-e",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "-e",
+      "OMP_NUM_THREADS=2",
+      "sha256:84a080eebc485e454d4420e1d7f91f7fd6a0e1e42851d3ad7396944758b8b53d",
+      "python3 -c 'import hashlib, json, os, sys\nfrom pathlib import Path\nprint(json.dumps({\"cwd\": os.getcwd(), \"uid\": os.getuid(), \"gid\": os.getgid()}), flush=True)\nfor filename, expected in zip(sys.argv[2::2], sys.argv[3::2]):\n    print(\"M2_INPUT_OPEN \" + filename, flush=True)\n    actual = hashlib.sha256(Path(filename).read_bytes()).hexdigest()\n    if actual != expected:\n        raise ValueError(\"M2_INPUT_HASH_MISMATCH \" + filename)\n    print(\"M2_INPUT_READ_OK \" + filename + \" \" + actual, flush=True)\nwith Path(sys.argv[1]).open(\"x\") as stream:\n    stream.write(\"Input hashes and new output write verified; not a physical PASS.\\n\")\nprint(\"M2_CONTAINER_ACCESS_OK\", flush=True)\n' /work/precheck_input_access.txt /work/tt/precheck/precheck.py 099e43d90af79d91d132be6eb06b1bc38ebaacf7f2f2e0a0d57a72d8e7c5dd7b /work/project/checks/tt_um_mac_sentry.gds b384cadae5efc35a151974d5385ee07089c330fb86dba53c24a529a6b8983f7c /pdk/sky130A/SOURCES 6360701d3913a5fd57d6b2af1503d311b859b4d8a6e8afc1b3971d1e973105b5"
+    ],
+    "started_utc": "2026-11-08T10:25:28.939323+00:00",
+    "returncode": 0,
+    "expected_failure": null
+  },
+  {
+    "name": "precheck",
+    "argv": [
+      "/usr/bin/python3",
+      "/home/sid/Development/hardware/mac_sentry/overnight/container_runtime.py",
+      "run",
+      "--network=none",
+      "--pull=never",
+      "-v",
+      "/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_:/work:rw,Z",
+      "-v",
+      "/home/sid/Development/hardware/mac_sentry/build/asic-tools/pdk/ciel/sky130/versions/0536d02d875c8f67dd7cca3902ac457e62f20005:/pdk:ro",
+      "-w",
+      "/work/tt/precheck",
+      "-e",
+      "PDK_ROOT=/pdk",
+      "-e",
+      "PDK=sky130A",
+      "-e",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "-e",
+      "OMP_NUM_THREADS=2",
+      "sha256:84a080eebc485e454d4420e1d7f91f7fd6a0e1e42851d3ad7396944758b8b53d",
+      "python precheck.py --gds /work/project/checks/tt_um_mac_sentry.gds --tech sky130A"
+    ],
+    "started_utc": "2026-11-08T10:25:36.892230+00:00",
+    "returncode": 0,
+    "expected_failure": null
+  },
+  {
+    "name": "iverilog_version",
+    "argv": [
+      "iverilog",
+      "-V"
+    ],
+    "started_utc": "2026-11-08T10:28:46.191569+00:00",
+    "returncode": 0,
+    "expected_failure": null
+  },
+  {
+    "name": "vvp_version",
+    "argv": [
+      "vvp",
+      "-V"
+    ],
+    "started_utc": "2026-11-08T10:28:46.217431+00:00",
+    "returncode": 0,
+    "expected_failure": null
+  },
+  {
+    "name": "gls_compile",
+    "argv": [
+      "iverilog",
+      "-g2012",
+      "-DFUNCTIONAL",
+      "-DUNIT_DELAY=#0",
+      "-I/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_/sources/rtl",
+      "-s",
+      "asic_gl_tb",
+      "-o",
+      "/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_/gls.vvp",
+      "/home/sid/Development/hardware/mac_sentry/build/asic-tools/pdk/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/verilog/primitives.v",
+      "/home/sid/Development/hardware/mac_sentry/build/asic-tools/pdk/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v",
+      "/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_/project/src/runs/R2/final/nl/tt_um_mac_sentry.nl.v",
+      "/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_/reference.sv",
+      "/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_/sources/rtl/secded_encoder.sv",
+      "/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_/sources/rtl/secded_decoder.sv",
+      "/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_/sources/rtl/signed_residue7.sv",
+      "/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_/sources/rtl/mac_residue7_check.sv",
+      "/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_/sources/rtl/mac_hybrid.sv",
+      "/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_/sources/tests/asic_gl_tb.sv"
+    ],
+    "started_utc": "2026-11-08T10:28:46.225148+00:00",
+    "returncode": 0,
+    "expected_failure": null
+  },
+  {
+    "name": "gls_positive",
+    "argv": [
+      "vvp",
+      "/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_/gls.vvp",
+      "+TRACE=/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_/gls_positive.vcd"
+    ],
+    "started_utc": "2026-11-08T10:28:46.748765+00:00",
+    "returncode": 0,
+    "expected_failure": null
+  },
+  {
+    "name": "gls_negative_observation",
+    "argv": [
+      "vvp",
+      "/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_/gls.vvp",
+      "+NEGATIVE_OBSERVATION"
+    ],
+    "started_utc": "2026-11-08T10:28:50.358200+00:00",
+    "returncode": 1,
+    "expected_failure": "M2_GLS_COMPARE sample=100"
+  },
+  {
+    "name": "gls_negative_arithmetic",
+    "argv": [
+      "vvp",
+      "/home/sid/Development/hardware/mac_sentry/build/asic_flow/run_ym_hhxr_/gls.vvp",
+      "+NEGATIVE_ARITHMETIC"
+    ],
+    "started_utc": "2026-11-08T10:28:50.779555+00:00",
+    "returncode": 1,
+    "expected_failure": "M2_GLS_ORACLE"
+  }
+]

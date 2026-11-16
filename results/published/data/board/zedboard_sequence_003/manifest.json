@@ -1,0 +1,417 @@
+{
+  "schema": 1,
+  "created_utc": "2026-10-14T10:55:16.554826+00:00",
+  "variant": "unprotected",
+  "board_reported_by_user": "ZedBoard",
+  "operand_width": 8,
+  "acc_width": 24,
+  "nominal_clock_hz": 100000000,
+  "clock_frequency_basis": "Board oscillator; not inferred from timing closure",
+  "project": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.xpr",
+  "implementation_run": "impl_1",
+  "git_revision": "4092fc1368e9af447541a203a8ef20cb995c9809",
+  "git_status": "M .gitignore\n M README.md\n?? results/\n?? scripts/archive_fpga_run.py\n?? scripts/compact_fpga_results.py\n?? scripts/export_ila_capture.tcl\n?? scripts/setup_vivado_sim.tcl\n?? tests/mac_tb.sv\n?? tests/test_compact_results.py\n?? tests/test_fpga_archive.py",
+  "source_identity_note": "Snapshot at archive time; not proof these sources produced the bitstream or capture.",
+  "capture_build_identity_note": "Files collected together; programmed bitstream/capture association not independently verified.",
+  "resource_scope": "Instrumented FPGA design including VIO, ILA, debug hub, and wrapper",
+  "timing_findings": [
+    {
+      "report": "zedboard_mac_top_timing_summary_routed.rpt",
+      "check": "no_clock",
+      "count": 0
+    },
+    {
+      "report": "zedboard_mac_top_timing_summary_routed.rpt",
+      "check": "unconstrained_internal_endpoints",
+      "count": 0
+    }
+  ],
+  "captures": [
+    {
+      "capture": "001_sequence_003_step1",
+      "samples": 1024,
+      "checked_transitions": 1023,
+      "observed_events": 1,
+      "complete_mac_transactions": 1,
+      "mismatches": 0,
+      "initial_accumulator": 0,
+      "final_accumulator": 1870
+    },
+    {
+      "capture": "002_sequence_003_step2",
+      "samples": 1024,
+      "checked_transitions": 1023,
+      "observed_events": 1,
+      "complete_mac_transactions": 1,
+      "mismatches": 0,
+      "initial_accumulator": 1870,
+      "final_accumulator": 2110
+    }
+  ],
+  "warnings": [],
+  "copied_files": [
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/rtl/mac_unprotected.sv",
+      "archived": "sources/core/rtl/mac_unprotected.sv",
+      "original_mtime_utc": "2026-09-23T17:25:54.167255+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/model/__init__.py",
+      "archived": "sources/core/model/__init__.py",
+      "original_mtime_utc": "2026-09-23T17:25:33.668885+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/model/mac.py",
+      "archived": "sources/core/model/mac.py",
+      "original_mtime_utc": "2026-09-23T17:25:33.740883+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/tests/mac_tb.cpp",
+      "archived": "sources/core/tests/mac_tb.cpp",
+      "original_mtime_utc": "2026-09-23T17:25:34.047873+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/tests/mac_tb.sv",
+      "archived": "sources/core/tests/mac_tb.sv",
+      "original_mtime_utc": "2026-10-14T05:16:19.195976+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/tests/test_compact_results.py",
+      "archived": "sources/core/tests/test_compact_results.py",
+      "original_mtime_utc": "2026-10-14T09:03:00.784986+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/tests/test_fpga_archive.py",
+      "archived": "sources/core/tests/test_fpga_archive.py",
+      "original_mtime_utc": "2026-10-14T08:41:47.578920+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/tests/test_model.py",
+      "archived": "sources/core/tests/test_model.py",
+      "original_mtime_utc": "2026-09-23T17:25:33.857879+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/scripts/archive_fpga_run.py",
+      "archived": "sources/core/scripts/archive_fpga_run.py",
+      "original_mtime_utc": "2026-10-14T09:02:26.382378+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/scripts/compact_fpga_results.py",
+      "archived": "sources/core/scripts/compact_fpga_results.py",
+      "original_mtime_utc": "2026-10-14T09:02:26.354378+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/scripts/export_ila_capture.tcl",
+      "archived": "sources/core/scripts/export_ila_capture.tcl",
+      "original_mtime_utc": "2026-10-14T08:41:47.551920+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/scripts/generate_vectors.py",
+      "archived": "sources/core/scripts/generate_vectors.py",
+      "original_mtime_utc": "2026-09-23T17:25:33.974875+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/scripts/provenance.py",
+      "archived": "sources/core/scripts/provenance.py",
+      "original_mtime_utc": "2026-09-23T17:28:32.951715+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/scripts/setup_vivado_sim.tcl",
+      "archived": "sources/core/scripts/setup_vivado_sim.tcl",
+      "original_mtime_utc": "2026-10-14T05:19:04.241043+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/spec/mac_interface_and_fault_model.md",
+      "archived": "sources/core/spec/mac_interface_and_fault_model.md",
+      "original_mtime_utc": "2026-09-23T17:27:30.473476+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/research/baseline_validation.md",
+      "archived": "sources/core/research/baseline_validation.md",
+      "original_mtime_utc": "2026-09-23T17:28:33.025716+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/research/decision_log.md",
+      "archived": "sources/core/research/decision_log.md",
+      "original_mtime_utc": "2026-09-23T17:27:30.667477+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/README.md",
+      "archived": "sources/core/README.md",
+      "original_mtime_utc": "2026-10-14T09:10:26.970903+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/Makefile",
+      "archived": "sources/core/Makefile",
+      "original_mtime_utc": "2026-09-23T17:28:32.877715+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/.gitignore",
+      "archived": "sources/core/.gitignore",
+      "original_mtime_utc": "2026-10-14T09:02:26.413378+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.xpr",
+      "archived": "sources/fpga/mac_sentry_fpga.xpr",
+      "original_mtime_utc": "2026-10-14T10:43:25.929585+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.srcs/constrs_1/new/constr_mac.xdc",
+      "archived": "sources/fpga/mac_sentry_fpga.srcs/constrs_1/new/constr_mac.xdc",
+      "original_mtime_utc": "2026-10-14T09:18:17.316448+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.srcs/sources_1/ip/ila_mac/ila_mac.xci",
+      "archived": "sources/fpga/mac_sentry_fpga.srcs/sources_1/ip/ila_mac/ila_mac.xci",
+      "original_mtime_utc": "2026-10-14T05:37:58.453922+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.srcs/sources_1/ip/vio_mac/vio_mac.xci",
+      "archived": "sources/fpga/mac_sentry_fpga.srcs/sources_1/ip/vio_mac/vio_mac.xci",
+      "original_mtime_utc": "2026-10-14T05:34:25.023713+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.srcs/sources_1/new/zedboard_mac_top.sv",
+      "archived": "sources/fpga/mac_sentry_fpga.srcs/sources_1/new/zedboard_mac_top.sv",
+      "original_mtime_utc": "2026-10-14T05:43:19.466423+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/rtl/mac_unprotected.sv",
+      "archived": "sources/references/000_mac_unprotected.sv",
+      "original_mtime_utc": "2026-09-23T17:25:54.167255+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.srcs/sources_1/new/zedboard_mac_top.sv",
+      "archived": "sources/references/001_zedboard_mac_top.sv",
+      "original_mtime_utc": "2026-10-14T05:43:19.466423+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.srcs/constrs_1/new/constr_mac.xdc",
+      "archived": "sources/references/002_constr_mac.xdc",
+      "original_mtime_utc": "2026-10-14T09:18:17.316448+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/tests/mac_tb.sv",
+      "archived": "sources/references/003_mac_tb.sv",
+      "original_mtime_utc": "2026-10-14T05:16:19.195976+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.srcs/utils_1/imports/synth_1/zedboard_mac_top.dcp",
+      "archived": "sources/references/004_zedboard_mac_top.dcp",
+      "original_mtime_utc": "2026-10-14T09:18:32.732383+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.srcs/sources_1/ip/vio_mac/vio_mac.xci",
+      "archived": "sources/references/005_vio_mac.xci",
+      "original_mtime_utc": "2026-10-14T05:34:25.023713+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.srcs/sources_1/ip/ila_mac/ila_mac.xci",
+      "archived": "sources/references/006_ila_mac.xci",
+      "original_mtime_utc": "2026-10-14T05:37:58.453922+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.runs/impl_1/zedboard_mac_top_bus_skew_routed.rpt",
+      "archived": "reports/zedboard_mac_top_bus_skew_routed.rpt",
+      "original_mtime_utc": "2026-10-14T09:21:07.805650+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.runs/impl_1/zedboard_mac_top_clock_utilization_routed.rpt",
+      "archived": "reports/zedboard_mac_top_clock_utilization_routed.rpt",
+      "original_mtime_utc": "2026-10-14T09:21:09.162635+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.runs/impl_1/zedboard_mac_top_control_sets_placed.rpt",
+      "archived": "reports/zedboard_mac_top_control_sets_placed.rpt",
+      "original_mtime_utc": "2026-10-14T09:20:38.821978+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.runs/impl_1/zedboard_mac_top_drc_opted.rpt",
+      "archived": "reports/zedboard_mac_top_drc_opted.rpt",
+      "original_mtime_utc": "2026-10-14T09:20:30.738070+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.runs/impl_1/zedboard_mac_top_drc_routed.rpt",
+      "archived": "reports/zedboard_mac_top_drc_routed.rpt",
+      "original_mtime_utc": "2026-10-14T09:21:05.254679+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.runs/impl_1/zedboard_mac_top_io_placed.rpt",
+      "archived": "reports/zedboard_mac_top_io_placed.rpt",
+      "original_mtime_utc": "2026-10-14T09:20:38.966977+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.runs/impl_1/zedboard_mac_top_methodology_drc_routed.rpt",
+      "archived": "reports/zedboard_mac_top_methodology_drc_routed.rpt",
+      "original_mtime_utc": "2026-10-14T09:21:07.147658+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.runs/impl_1/zedboard_mac_top_power_routed.rpt",
+      "archived": "reports/zedboard_mac_top_power_routed.rpt",
+      "original_mtime_utc": "2026-10-14T09:21:08.719640+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.runs/impl_1/zedboard_mac_top_route_status.rpt",
+      "archived": "reports/zedboard_mac_top_route_status.rpt",
+      "original_mtime_utc": "2026-10-14T09:21:07.782650+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.runs/impl_1/zedboard_mac_top_timing_summary_routed.rpt",
+      "archived": "reports/zedboard_mac_top_timing_summary_routed.rpt",
+      "original_mtime_utc": "2026-10-14T09:21:07.684652+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.runs/impl_1/zedboard_mac_top_utilization_placed.rpt",
+      "archived": "reports/zedboard_mac_top_utilization_placed.rpt",
+      "original_mtime_utc": "2026-10-14T09:20:38.929977+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.runs/impl_1/zedboard_mac_top.bit",
+      "archived": "build/zedboard_mac_top.bit",
+      "original_mtime_utc": "2026-10-14T10:44:08.336101+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.runs/impl_1/debug_nets.ltx",
+      "archived": "build/debug_nets.ltx",
+      "original_mtime_utc": "2026-10-14T10:44:08+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.runs/impl_1/zedboard_mac_top.ltx",
+      "archived": "build/zedboard_mac_top.ltx",
+      "original_mtime_utc": "2026-10-14T10:44:08.432100+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.runs/impl_1/zedboard_mac_top_routed.dcp",
+      "archived": "build/zedboard_mac_top_routed.dcp",
+      "original_mtime_utc": "2026-10-14T09:21:09.761628+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry_fpga/mac_sentry_fpga.runs/impl_1/runme.log",
+      "archived": "reports/runme.log",
+      "original_mtime_utc": "2026-10-14T10:44:08.434392+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/results/captures/sequence_003_step1.ila",
+      "archived": "captures/001_sequence_003_step1/sequence_003_step1.ila",
+      "original_mtime_utc": "2026-10-14T10:52:30.413420+00:00"
+    },
+    {
+      "original": "/home/sid/Development/hardware/mac_sentry/results/captures/sequence_003_step2.ila",
+      "archived": "captures/002_sequence_003_step2/sequence_003_step2.ila",
+      "original_mtime_utc": "2026-10-14T10:53:28.550772+00:00"
+    }
+  ],
+  "project_references": [
+    {
+      "project_path": "$PPRDIR/../mac_sentry/rtl/mac_unprotected.sv",
+      "archive_path": "sources/references/000_mac_unprotected.sv"
+    },
+    {
+      "project_path": "$PSRCDIR/sources_1/new/zedboard_mac_top.sv",
+      "archive_path": "sources/references/001_zedboard_mac_top.sv"
+    },
+    {
+      "project_path": "$PSRCDIR/constrs_1/new/constr_mac.xdc",
+      "archive_path": "sources/references/002_constr_mac.xdc"
+    },
+    {
+      "project_path": "$PPRDIR/../mac_sentry/tests/mac_tb.sv",
+      "archive_path": "sources/references/003_mac_tb.sv"
+    },
+    {
+      "project_path": "$PSRCDIR/utils_1/imports/synth_1/zedboard_mac_top.dcp",
+      "archive_path": "sources/references/004_zedboard_mac_top.dcp"
+    },
+    {
+      "project_path": "$PSRCDIR/sources_1/ip/vio_mac/vio_mac.xci",
+      "archive_path": "sources/references/005_vio_mac.xci"
+    },
+    {
+      "project_path": "$PSRCDIR/sources_1/ip/ila_mac/ila_mac.xci",
+      "archive_path": "sources/references/006_ila_mac.xci"
+    }
+  ],
+  "report_metadata": [
+    "| Design State     : routed",
+    "| Design State : Fully Placed",
+    "| Design State : Fully Routed",
+    "| Design State : Routed",
+    "| Design State : Synthesized",
+    "| Device                    : xc7z020",
+    "| Device           : xc7z020clg484-1",
+    "| Device       : 7z020-clg484",
+    "| Device       : xc7z020",
+    "| Device       : xc7z020clg484-1",
+    "| Device Static (W)        | 0.103        |",
+    "| Device models               | High       | Device models are Production                   |                                                                                                            |",
+    "| Tool Version              : Vivado v.2025.2.1 (lin64) Build 6403652 Thu Mar 19 13:47:00 MDT 2026",
+    "| Tool Version     : Vivado v.2025.2.1 (lin64) Build 6403652 Thu Mar 19 13:47:00 MDT 2026",
+    "| Tool Version : Vivado v.2025.2.1 (lin64) Build 6403652 Thu Mar 19 13:47:00 MDT 2026"
+  ],
+  "file_sha256": {
+    "README.md": "b3dbb53615f42dc30c722238c475084c229deb28b8c39d323bbd3991c92c0acd",
+    "build/debug_nets.ltx": "b05744e1d86cf7050087708eb66907ef8f9e12cfc8c777ec70293b9f359ca5c9",
+    "build/zedboard_mac_top.bit": "021d12fadd9773552663b15e6c7f07ba5318f7e230c843cc973998d2ab361e94",
+    "build/zedboard_mac_top.ltx": "b05744e1d86cf7050087708eb66907ef8f9e12cfc8c777ec70293b9f359ca5c9",
+    "build/zedboard_mac_top_routed.dcp": "68cc3e2b7140faa4f73a849917da02e118cc260bd1d9d82160ad1135d5d34e1e",
+    "capture_summary.csv": "e4ea5ac399c019ec8f3023ba552bc950b3a8dbf1a31e594c70df482dec64d7bf",
+    "captures/001_sequence_003_step1/probes.ltx": "d9bda12637005306f041a0809f882f37f550fedce8493abe1fa6fb7031924304",
+    "captures/001_sequence_003_step1/samples_decimal.csv": "aea74fce3f86af17a96bc76c1e15f27303fa14257c19866d2a03c6ae2717f4b6",
+    "captures/001_sequence_003_step1/sequence_003_step1.ila": "17383fb5e0290e0d47a8db584b372eb566670ea875f1114e81e1ac3b8621fe0f",
+    "captures/001_sequence_003_step1/waveform.csv": "dee5054f0e9a539c64ef86bbcc2e512bde4adebfbe9aa53cd631d5b4eb52a398",
+    "captures/001_sequence_003_step1/waveform.vcd": "4e15e92af8139f0868de39f45bd70dcc18dc5a13842532234202c8d7390bcd09",
+    "captures/002_sequence_003_step2/probes.ltx": "d9bda12637005306f041a0809f882f37f550fedce8493abe1fa6fb7031924304",
+    "captures/002_sequence_003_step2/samples_decimal.csv": "70a9187a02d56f2b29e19e529c539c5e896db25bc5680c2c08d4eafc3f8e40d5",
+    "captures/002_sequence_003_step2/sequence_003_step2.ila": "32542702ba980d3d78e19345ca1ed167e6ab5923924e38966d9b38f19ad4dd84",
+    "captures/002_sequence_003_step2/waveform.csv": "42d36d766cfd242d988e751e6441fe3c84f288026a15559fe79b42c52f7fde7c",
+    "captures/002_sequence_003_step2/waveform.vcd": "7fb339fa7b69d216d59ba79969f1c3f37f049af1518a3c16ede2b52ce0a57d26",
+    "mismatches.csv": "f97f7dab573e235b6fe14f99bf862e6ad48c1571da6370579f08198c58fbe5f6",
+    "reports/runme.log": "191d7a58d3b690a9ef9338c6ed364b4814f5d86205e9bdc724beb8c7316cff0c",
+    "reports/zedboard_mac_top_bus_skew_routed.rpt": "e700b0c27398d958f899c44c7fd6b82ed63ca50da6a9034f9b7e990212780991",
+    "reports/zedboard_mac_top_clock_utilization_routed.rpt": "c6e896b1cea22d82418fdaed4c08975e1b11b14fe1ca09d0b2c729b4f0d50503",
+    "reports/zedboard_mac_top_control_sets_placed.rpt": "21379a8a7eef873929304764f85c9810aad0a1e5a934301618d95901e9d3d888",
+    "reports/zedboard_mac_top_drc_opted.rpt": "36e2416d407f7f97495c640db8231753d8bfd8f2de58072510be8e3681f0b184",
+    "reports/zedboard_mac_top_drc_routed.rpt": "f1c77a5273a28c6c12d72509f4fc0ad9c56cefc416ae9e5ea4ae34f0eb3165f1",
+    "reports/zedboard_mac_top_io_placed.rpt": "98fae4fac2002c08de4bf0fcc01180f7994a7846682943c903148efd1d46df1a",
+    "reports/zedboard_mac_top_methodology_drc_routed.rpt": "610c0201856b5585593943123f1704e9f33351ef0c11daa0cc22d1ad7578917d",
+    "reports/zedboard_mac_top_power_routed.rpt": "2ba4c77d5ed8cdf2e06cef2588841f71a62c79b7de65409ec5cba1f10e5ecb55",
+    "reports/zedboard_mac_top_route_status.rpt": "c0aa10781b5fba545a7975d5286b18d0c7fca679416409ee88f43716fd18e23c",
+    "reports/zedboard_mac_top_timing_summary_routed.rpt": "f80a0bfeefc248c204b40b608d5e6abd99eefdc897ec2027207ca872df882404",
+    "reports/zedboard_mac_top_utilization_placed.rpt": "ff9d2e041f3b8a70c407602293d1c640595a2419f0b5a8f5b4d854f92863b56a",
+    "source_changes.patch": "63b3256b18264d7277bd1275af34fc06d90809254d47481808ab5b29f85f94af",
+    "sources/core/.gitignore": "1089e8291cab3da034d4b84f972b369016fdd032edc3eb3c8b4ab7ccc385fbaa",
+    "sources/core/Makefile": "cb5918e80f4718d6c041350b12fd2bfa2cd027a35097d540b7d903f77cb3cb2d",
+    "sources/core/README.md": "6a427d58fe131e07c87a539716e443fd7bdf646e801c7e54aee02f8d222eeeec",
+    "sources/core/model/__init__.py": "93af91a746a591a741364ef136ba8ecfde5a4afbd3dae23be2c2679a03053d3e",
+    "sources/core/model/mac.py": "2d1e4a3c5d41906c936adbb56b203778e75c761ed0da79c7b7f450f82ee0d1f8",
+    "sources/core/research/baseline_validation.md": "d6d5c6ec7ed4c100373d720933b41e655811535ce5d61ff4e276a8d05945244c",
+    "sources/core/research/decision_log.md": "8ad8b61938b6d76311fac692c91adc55864562d2531ef0ad9c06ff581a5499b3",
+    "sources/core/rtl/mac_unprotected.sv": "830cc7238e954ff309e5fc752717dcb855ccce096ef30726360ce62c98129180",
+    "sources/core/scripts/archive_fpga_run.py": "e4bfcddb5ba06c7605b4b5e8c426e25f7a73df8e271a269066e044e0c738140e",
+    "sources/core/scripts/compact_fpga_results.py": "b0636a91ecaa303fe7ae06c00af6c2ec1362296a249ed93b0292c6b041cce794",
+    "sources/core/scripts/export_ila_capture.tcl": "611674b45787a99e571f6e2555a000087b7ae9deebc64aac54757af01f80c33b",
+    "sources/core/scripts/generate_vectors.py": "712e975d847ced7893960c557f517bfabe47b26288b18fc7da416158f3ee702c",
+    "sources/core/scripts/provenance.py": "6bcc6731bf2d026375d2839910f25f07c3d26ab7a29bc4dbdbde5ea97c9cba5e",
+    "sources/core/scripts/setup_vivado_sim.tcl": "fe0bf26b5f607492cbf67259470d9ccd768380dbc113149840f3d4087825c407",
+    "sources/core/spec/mac_interface_and_fault_model.md": "aa6ddc55b5e6c1f8d534714e51438f9af950b2a4b2e594029a079ee86ad52960",
+    "sources/core/tests/mac_tb.cpp": "1bdf7b8776460712ae3d8a2965a767dd6480beb2d2ff1626eb62674a3d72ec03",
+    "sources/core/tests/mac_tb.sv": "e3aa28e3552cf106452608ea467e9b59440f9d1ca98bc955cc86356e6a7f4d93",
+    "sources/core/tests/test_compact_results.py": "2613eecc1f2fd28d565e089fb79cc35b0da02932629713b9d0a3e6d6ab9bd0aa",
+    "sources/core/tests/test_fpga_archive.py": "9293d9cbc4838e416d64ec8206aae89fef1abf7fd89b13ad1b294567428bed4c",
+    "sources/core/tests/test_model.py": "3ce3ffa5f3c1fbf1343db8422b9c0d3aa425dd34ce1b65f115b249ebe1a3b670",
+    "sources/fpga/mac_sentry_fpga.srcs/constrs_1/new/constr_mac.xdc": "823dd468f4c38193d13b5e8bf452cd6faf2fabbf8f281bbef45282f571219bb5",
+    "sources/fpga/mac_sentry_fpga.srcs/sources_1/ip/ila_mac/ila_mac.xci": "785d1b72383fc51fcaef5a2278d7a8fb04da818f88c6ca8669269e035697dde9",
+    "sources/fpga/mac_sentry_fpga.srcs/sources_1/ip/vio_mac/vio_mac.xci": "5ef127cce4094ed45de57daf7f59b5e2261aecd82f6ed294614d8f4e92221d2c",
+    "sources/fpga/mac_sentry_fpga.srcs/sources_1/new/zedboard_mac_top.sv": "e4b8a9fa819558b8a01ce46741bd6f6376c455cef07dc6dc618f1af3b893d38e",
+    "sources/fpga/mac_sentry_fpga.xpr": "404597e88dcb24d9c04ce58501e01444e3d52c70282aa1e48b03cf6c6e203832",
+    "sources/references/000_mac_unprotected.sv": "830cc7238e954ff309e5fc752717dcb855ccce096ef30726360ce62c98129180",
+    "sources/references/001_zedboard_mac_top.sv": "e4b8a9fa819558b8a01ce46741bd6f6376c455cef07dc6dc618f1af3b893d38e",
+    "sources/references/002_constr_mac.xdc": "823dd468f4c38193d13b5e8bf452cd6faf2fabbf8f281bbef45282f571219bb5",
+    "sources/references/003_mac_tb.sv": "e3aa28e3552cf106452608ea467e9b59440f9d1ca98bc955cc86356e6a7f4d93",
+    "sources/references/004_zedboard_mac_top.dcp": "01c746b241ba1d8c5251f85c45daa823b53cfa52dcfad281bb16c1e24852ca9c",
+    "sources/references/005_vio_mac.xci": "5ef127cce4094ed45de57daf7f59b5e2261aecd82f6ed294614d8f4e92221d2c",
+    "sources/references/006_ila_mac.xci": "785d1b72383fc51fcaef5a2278d7a8fb04da818f88c6ca8669269e035697dde9",
+    "test_plan.csv": "6309b7c303be5caae6ca3cb0d53039cfc0dad72b189efc592acd3b1b00f20ecb",
+    "tests.csv": "2ccdd9d7f55e6f4a211fb95ce06bee240be0e42d6d15db9e7da95ac0ebccd91e"
+  }
+}

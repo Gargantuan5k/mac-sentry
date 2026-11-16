@@ -1,0 +1,100 @@
+{
+  "PL_TARGET_DENSITY_PCT": 60,
+  "CLOCK_PERIOD": 50,
+  "PL_RESIZER_HOLD_SLACK_MARGIN": 0.1,
+  "GRT_RESIZER_HOLD_SLACK_MARGIN": 0.05,
+  "RUN_LINTER": 1,
+  "LINTER_INCLUDE_PDK_MODELS": 1,
+  "CLOCK_PORT": "clk",
+  "RUN_KLAYOUT_XOR": true,
+  "RUN_KLAYOUT_DRC": true,
+  "DESIGN_REPAIR_BUFFER_OUTPUT_PORTS": 0,
+  "TOP_MARGIN_MULT": 1,
+  "BOTTOM_MARGIN_MULT": 1,
+  "LEFT_MARGIN_MULT": 6,
+  "RIGHT_MARGIN_MULT": 6,
+  "FP_SIZING": "absolute",
+  "GRT_ALLOW_CONGESTION": 1,
+  "FP_IO_HLENGTH": 2,
+  "FP_IO_VLENGTH": 2,
+  "FP_PDN_VPITCH": 38.87,
+  "RUN_CTS": 1,
+  "FP_PDN_MULTILAYER": 0,
+  "MAGIC_DEF_LABELS": 0,
+  "MAGIC_WRITE_LEF_PINONLY": 1,
+  "IO_DELAY_CONSTRAINT": 20,
+  "OUTPUT_CAP_LOAD": 10,
+  "CLOCK_UNCERTAINTY_CONSTRAINT": 0.25,
+  "CLOCK_TRANSITION_CONSTRAINT": 0.15,
+  "TIMING_VIOLATION_CORNERS": [
+    "*"
+  ],
+  "SETUP_VIOLATION_CORNERS": [
+    "*"
+  ],
+  "HOLD_VIOLATION_CORNERS": [
+    "*"
+  ],
+  "MAX_SLEW_VIOLATION_CORNERS": [
+    "*"
+  ],
+  "MAX_CAP_VIOLATION_CORNERS": [
+    "*"
+  ],
+  "MAX_FANOUT_CONSTRAINT": 10,
+  "MAX_TRANSITION_CONSTRAINT": 0.75,
+  "EXTRA_EXCLUDED_CELLS": [
+    "sky130_fd_sc_hd__clkdlybuf4s*",
+    "sky130_fd_sc_hd__dlygate4sd*",
+    "sky130_fd_sc_hd__dlymetal6s*",
+    "sky130_fd_sc_hd__clkbuf_1",
+    "sky130_fd_sc_hd__buf_1"
+  ],
+  "DESIGN_REPAIR_MAX_SLEW_PCT": 50,
+  "GRT_DESIGN_REPAIR_MAX_SLEW_PCT": 50,
+  "RUN_POST_GRT_DESIGN_REPAIR": true,
+  "CTS_DISTANCE_BETWEEN_BUFFERS": 25,
+  "CTS_ROOT_BUFFER": "sky130_fd_sc_hd__clkbuf_16",
+  "CTS_CLK_BUFFERS": [
+    "sky130_fd_sc_hd__clkbuf_8",
+    "sky130_fd_sc_hd__clkbuf_4",
+    "sky130_fd_sc_hd__clkbuf_2"
+  ],
+  "MAX_CAPACITANCE_CONSTRAINT": 0.2,
+  "TIME_DERATING_CONSTRAINT": 5,
+  "DESIGN_NAME": "tt_um_mac_sentry",
+  "VERILOG_FILES": [
+    "dir::secded_encoder.sv",
+    "dir::secded_decoder.sv",
+    "dir::signed_residue7.sv",
+    "dir::mac_residue7_check.sv",
+    "dir::mac_hybrid.sv",
+    "dir::tt_um_mac_sentry.sv"
+  ],
+  "VERILOG_INCLUDE_DIRS": [
+    "dir::."
+  ],
+  "DIE_AREA": [
+    0,
+    0,
+    334.88,
+    225.76
+  ],
+  "FP_DEF_TEMPLATE": "dir::../../tt/tech/sky130A/def/tt_block_2x2_pg.def",
+  "VDD_PIN": "VPWR",
+  "GND_PIN": "VGND",
+  "RT_MAX_LAYER": "met4",
+  "PNR_SDC_FILE": "dir::constraints_pnr.sdc",
+  "SIGNOFF_SDC_FILE": "dir::constraints.sdc",
+  "STA_CORNERS": [
+    "min_tt_025C_1v80",
+    "min_ss_100C_1v60",
+    "min_ff_n40C_1v95",
+    "nom_tt_025C_1v80",
+    "nom_ss_100C_1v60",
+    "nom_ff_n40C_1v95",
+    "max_tt_025C_1v80",
+    "max_ss_100C_1v60",
+    "max_ff_n40C_1v95"
+  ]
+}

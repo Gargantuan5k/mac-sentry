@@ -1,10 +1,50 @@
+# Generated outputs, local dependencies and tool state
 /build/
+/.Xil/
 __pycache__/
 *.pyc
+.venv/
+.env*
+
+# Private agent/supervisor workflow: retained locally, not part of the project package
+/overnight/
+/AGENTS.md
+.agents/
+.codex/
+.aws/
+/HANDOFF.md
+/docs/overnight_*
+/docs/setup_gl_smoke.md
+/docs/project_status_handoff.md
+/docs/storage_and_retention.md
 /docs/team_explainer.md
 /docs/work_split*
-/HANDOFF.md
+/docs/local_history/
+/scripts/check_overnight_handoff.py
+/tests/test_overnight_handoff.py
+
+# Personal correspondence: kept locally, not part of the public project
+/docs/professor_update.txt
+
+# Editor/OS and simulator scratch files
+.DS_Store
+*.swp
+*~
+.vscode/
+.idea/
+/.pytest_cache/
+*.jou
+*.wdb
+/vivado*.log
+/vivado*.str
+/webtalk*
+/sim_build/
+/results.xml
+
+# Raw hardware data and large build archives. Small reviewed results are in published/.
 /results/fpga/
 /results/captures/
 /results/runs/
 /results/builds/
+
+.context/

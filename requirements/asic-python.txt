@@ -1,0 +1,5 @@
+# Isolated host environment; PDKs and native tools are external.
+librelane==3.0.14
+ciel==2.6.1
+cocotb==2.1.0
+pytest==8.4.2

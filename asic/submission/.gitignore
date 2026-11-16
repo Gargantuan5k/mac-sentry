@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+tt/
+runs/
+tt_submission/
+src/user_config.json
+src/config_merged.json
+test/sim_build/
+test/results.xml
+test/tb.fst
+test/tb.vcd
+test/gate_level_netlist.v
+test/output/
+gds_render.png
+datasheet.pdf
+ports.json
